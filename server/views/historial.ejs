@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>MultiShop - Online Shop Website Template</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="Free HTML Templates" name="keywords">
+  <meta content="Free HTML Templates" name="description">
+
+  <!-- Favicon -->
+  <link href="img/favicon.ico" rel="icon">
+
+  <!-- Google Web Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Libraries Stylesheet -->
+  <link href="lib/animate/animate.min.css" rel="stylesheet">
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+  <!-- Customized Bootstrap Stylesheet -->
+  <link href="css/style.css" rel="stylesheet">
+  <style>
+    .panel-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .panel-overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .info-panel {
+      background-color: white;
+      width: 400px;
+      max-width: 90%;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      padding: 25px;
+      transform: scale(0.9);
+      transition: transform 0.3s ease;
+      position: relative;
+    }
+
+    .panel-overlay.show .info-panel {
+      transform: scale(1);
+    }
+
+    .panel-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      cursor: pointer;
+      font-size: 20px;
+      color: #888;
+      background: none;
+      border: none;
+      font-weight: bold;
+    }
+
+    .panel-title {
+      font-size: 22px;
+      margin-bottom: 20px;
+      color: #333;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .panel-content {
+      margin-bottom: 25px;
+    }
+
+    .info-text {
+      padding: 12px 15px;
+      margin-bottom: 12px;
+      background-color: #f9f9f9;
+      border-radius: 6px;
+      border-left: 4px solid #4CAF50;
+    }
+
+    .info-text.warning {
+      border-left-color: #FF9800;
+    }
+
+    .info-text.error {
+      border-left-color: #F44336;
+    }
+
+    .panel-buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .panel-button {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.2s;
+    }
+
+    .btn-primary {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: #3e8e41;
+    }
+
+    .btn-secondary {
+      background-color: #f1f1f1;
+      color: #333;
+    }
+
+    .btn-secondary:hover {
+      background-color: #e2e2e2;
+    }
+
+    .input-group {
+      margin-top: 20px;
+      text-align: left;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 16px;
+      transition: border-color 0.3s;
+    }
+
+    .input-group input:focus {
+      border-color: #3498db;
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <%- include('partials/header') %>
+
+
+
+
+  <!-- Breadcrumb Start -->
+  <div class="container-fluid">
+    <div class="col-12">
+      <nav class="breadcrumb bg-light mb-30">
+        <a class="breadcrumb-item text-dark" href="/">Inicio</a>
+        <a class="breadcrumb-item text-dark" href="/tienda">Tienda</a>
+        <a class="breadcrumb-item text-dark" href="/carrito">Pagos</a>
+        <span class="breadcrumb-item active">Historial</span>
+      </nav>
+    </div>
+  </div>
+  <!-- Breadcrumb End -->
+
+  <style>
+    /* Estilos para el contenedor */
+    .confirm-message-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      /* Ocupa toda la altura de la ventana */
+      background-color: #f0f0f0;
+      font-family: sans-serif;
+      text-align: center;
+    }
+
+    /* Estilos para la caja del mensaje */
+    .confirm-message-box {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 40px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
+      width: 90%;
+    }
+
+    /* Estilos para el título */
+    .confirm-message-box h1 {
+      color: #333;
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+
+    /* Estilos para el párrafo */
+    .confirm-message-box p {
+      color: #666;
+      font-size: 1.2em;
+    }
+
+    .styled-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 25px 0;
+      font-size: 0.9em;
+      font-family: sans-serif;
+      min-width: 400px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .styled-table thead tr {
+      background-color: #009879;
+      color: #ffffff;
+      text-align: left;
+    }
+
+    .styled-table th,
+    .styled-table td {
+      padding: 12px 15px;
+    }
+
+    .styled-table tbody tr {
+      border-bottom: 1px solid #dddddd;
+    }
+
+    .styled-table tbody tr:nth-of-type(even) {
+      background-color: #f3f3f3;
+    }
+
+    .styled-table tbody tr:last-of-type {
+      border-bottom: 2px solid #009879;
+    }
+
+    .styled-table tbody tr.active-row {
+      font-weight: bold;
+      color: #009879;
+    }
+  </style>
+
+
+
+
+  <div class="panel-overlay" id="info-panel-overlay">
+    <div class="info-panel">
+      <button class="panel-close" onclick="hideInfoPanel()">&times;</button>
+      <h2 class="panel-title">Detalles del Pago</h2>
+      <div class="panel-content">
+        <div class="info-text">
+          <strong>Venezuela:</strong> 0102
+        </div>
+        <div class="info-text">
+          <strong>Cédula:</strong> V-1234567
+        </div>
+        <div class="info-text">
+          <strong>Teléfono:</strong> 04121234567
+        </div>
+        <div class="info-text warning" id="precioPanel">
+          <strong>Monto:</strong> 0
+        </div>
+        <div class="input-group">
+          <label for="bank-reference">Referencia bancaria:</label>
+          <input type="text" id="bank-reference" placeholder="Ingrese su referencia bancaria">
+        </div>
+      </div>
+      <div class="panel-buttons">
+        <button class="panel-button btn-primary" onclick="markAsPaidReferencia()">Pagado</button>
+        <button class="panel-button btn-secondary" onclick="hideInfoPanel()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Checkout Start -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">
+              <i class="fas fa-shopping-bag me-2"></i>
+              Mis Pedidos
+            </h4>
+          </div>
+          <div class="card-body">
+            <% if (typeof pedidos !== 'undefined' && pedidos && pedidos.length > 0) { %>
+            <div class="table-responsive">
+              <table class="table table-bordered table-hover table-striped">
+                <thead class="table-dark">
+                  <tr>
+                    <th>ID</th>
+                    <th>Fecha</th>
+                    <th>Total</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% pedidos.forEach(pedido => { %>
+                  <tr>
+                    <td><%= pedido._id.toString() %></td>
+                    <td><%= pedido.fechaFormateada %></td>
+                    <td>$<%= pedido.total ? parseFloat(pedido.total).toFixed(2) : '0.00' %></td>
+                    <td>
+                      <span class="badge bg-<%= 
+                            pedido.estado === 'completado' ? 'success' : 
+                            pedido.estado === 'pendiente' ? 'warning' : 
+                            pedido.estado === 'No pagado' ? 'danger' : 'secondary' 
+                        %>">
+                        <%= pedido.estado || 'desconocido' %>
+                      </span>
+                    </td>
+                    <td>
+                      <!-- Botón condicional para "No pagado" -->
+                      <% if (pedido.estado === 'No pagado') { %>
+                      <button class="btn btn-sm btn-success btn-pagar" data-pedido-id="<%= pedido._id %>" onclick="showInfoPanelNewReferencia('<%= pedido.total %>','<%= pedido._id %>')">
+                        <i class="fas fa-credit-card me-1"></i> Pagar Ahora
+                      </button>
+                      <% } else { %>
+                      <button class="btn btn-sm btn-info" onclick="showOrderDetails('<%= pedido._id %>')">
+                        <i class="fas fa-eye me-1"></i> Ver Detalles
+                      </button>
+                      <% } %>
+                    </td>
+                  </tr>
+                  <% }); %>
+                </tbody>
+              </table>
+            </div>
+            <% } else { %>
+            <div class="alert alert-info text-center">
+              <i class="fas fa-info-circle me-2"></i>
+              <%= typeof message !== 'undefined' ? message : 'No hay pedidos en tu historial' %>
+            </div>
+            <% } %>
+          </div>
+          <% if (pedidos.length > 0) { %>
+          <div class="card-footer">
+            <small class="text-muted">
+              Mostrando <%= pedidos.length %> pedido(s) en total
+            </small>
+          </div>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Estilos adicionales -->
+  <style>
+    .table th {
+      background-color: #2c3e50;
+      color: white;
+    }
+
+    .badge {
+      font-size: 0.8em;
+    }
+
+    .btn-group .btn {
+      margin-right: 5px;
+    }
+
+    /* Estilos para el panel de detalles del pedido */
+    .details-panel {
+      position: fixed;
+      top: 0;
+      right: -400px;
+      width: 400px;
+      height: 100vh;
+      background: white;
+      box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+      z-index: 1050;
+      transition: right 0.3s ease;
+      overflow-y: auto;
+      padding: 20px;
+    }
+
+    .details-panel.open {
+      right: 0;
+    }
+
+    .details-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1040;
+      display: none;
+    }
+
+    .details-overlay.active {
+      display: block;
+    }
+
+    .details-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 15px;
+      margin-bottom: 20px;
+    }
+
+    .details-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid #f5f5f5;
+    }
+
+    .details-total {
+      font-weight: bold;
+      margin-top: 20px;
+      padding-top: 10px;
+      border-top: 2px solid #eee;
+    }
+  </style>
+  <!-- Checkout End -->
+
+
+  <!-- Panel de detalles del pedido -->
+  <div class="details-overlay" id="detailsOverlay"></div>
+  <div class="details-panel" id="detailsPanel">
+    <div class="details-header">
+      <h4>Detalles del Pedido</h4>
+      <button type="button" class="btn-close" onclick="closeDetails()"></button>
+    </div>
+    <div id="detailsContent">
+      <!-- Aquí se cargarán los detalles del pedido -->
+    </div>
+  </div>
+
+
+  <!-- Footer Start -->
+  <%- include('partials/footer') %>
+  <!-- Footer End -->
+
+
+
+
+
+  <!-- Back to Top -->
+  <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+  <!-- JavaScript Libraries -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+  <script src="lib/easing/easing.min.js"></script>
+  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+  <!-- Contact Javascript File -->
+  <script src="mail/jqBootstrapValidation.min.js"></script>
+  <script src="mail/contact.js"></script>
+
+  <!-- Template Javascript -->
+  <script src="js/main.js"></script>
+  <%- include('partials/script-generals') %>
+  <script>
+    function showInfoPanelNewReferencia(dolar, idPedido) {
+      const overlay = document.getElementById('info-panel-overlay');
+
+      idTarget = idPedido
+
+      const precioPanel = document.getElementById('precioPanel');
+
+
+      precioPanel.childNodes[2].textContent = ` $ ${dolar}`;
+
+      overlay.classList.add('show');
+      document.body.style.overflow = 'hidden'; // Prevenir scroll
+    }
+
+    let idTarget;
+
+    function showInfoPanel() {
+      const overlay = document.getElementById('info-panel-overlay');
+      overlay.classList.add('show');
+      document.body.style.overflow = 'hidden'; // Prevenir scroll
+    }
+
+    function hideInfoPanel() {
+      const overlay = document.getElementById('info-panel-overlay');
+      overlay.classList.remove('show');
+      document.body.style.overflow = ''; // Restaurar scroll
+    }
+
+    function markAsPaidReferencia() {
+      // Obtener el valor de la referencia bancaria
+      const bankReference = document.getElementById('bank-reference').value;
+
+      // Validar que se haya ingresado una referencia
+      if (!bankReference.trim()) {
+        showNotification('Por favor ingrese la referencia bancaria', 'error');
+        return;
+      }
+
+      // Aquí iría la lógica para procesar el pago con la referencia
+      //showNotification(`Pago procesado correctamente. Referencia: ${bankReference}`, 'default');
+      hideInfoPanel();
+      reProcesarPago();
+      // Opcional: Limpiar el campo para la próxima vez
+      document.getElementById('bank-reference').value = '';
+
+
+    }
+
+    // Cerrar el panel al hacer clic fuera del contenido
+    document.getElementById('info-panel-overlay').addEventListener('click', function(e) {
+      if (e.target === this) {
+        hideInfoPanel();
+      }
+    });
+
+
+
+
+    function reProcesarPago(id) {
+      // Recoger datos del formulario principal
+
+      const bankReference = document.getElementById('bank-reference').value;
+
+      const datosPago = {
+        nombres: $('#nombres').val(),
+        referencia: $('#bank-reference').val(),
+        idPedido: idTarget
+      };
+
+
+      // Enviar datos al servidor
+      $.ajax({
+        url: '/api/products/procesar-pago-ref',
+        type: 'POST',
+        dataType: 'json',
+        contentType: 'application/json',
+        data: JSON.stringify(datosPago),
+        success: function(response) {
+          if (response.success) {
+            showNotification('Pago registrado exitosamente', 'success');
+            // Redirigir o limpiar formulario
+            setTimeout(() => {
+              window.location.href = '/confirmacion-pago';
+            }, 2000);
+          } else {
+            showNotification(response.message, 'error');
+          }
+        },
+        error: function(xhr, status, error) {
+          console.error('Error al procesar pago:', error);
+          showNotification('Error al procesar el pago', 'error');
+        }
+      });
+    }
+  </script>
+
+
+
+ 
+
+
+<script>
+// Función para mostrar los detalles del pedido
+
+
+async function showOrderDetails(pedidoId) {
+    try {
+        // Usar AJAX con POST para obtener los detalles
+        $.ajax({
+            url: '/api/products/pedido/id',  // Ajusta esta URL según tu endpoint
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({ id: pedidoId }),
+            success: function(data) {
+                if (data.success) {
+                    const pedido = data.pedido;
+                    const detailsContent = document.getElementById('detailsContent');
+                    
+                    // Formatear los detalles del pedido
+                    detailsContent.innerHTML = `
+                        <div class="mb-3">
+                            <strong>ID Pedido:</strong> ${pedido._id}
+                        </div>
+                        <div class="mb-3">
+                            <strong>Fecha:</strong> ${pedido.fechaFormateada}
+                        </div>
+                        <div class="mb-3">
+                            <strong>Estado:</strong> 
+                            <span class="badge bg-${getEstadoBadgeColor(pedido.estado)}">
+                                ${pedido.estado}
+                            </span>
+                        </div>
+                        
+                        <h5 class="mt-4">Productos:</h5>
+                        ${pedido.productos.map(producto => `
+                            <div class="details-item">
+                                <div class="d-flex align-items-center">
+                                    <img src="/uploads/productos/${getImageName(producto.detalles.imagenes)}" 
+                                         alt="${producto.detalles.nombre}" 
+                                         class="img-thumbnail me-2" 
+                                         style="width: 50px; height: 50px; object-fit: cover;">
+                                    <div>
+                                        <div>${producto.detalles.nombre}</div>
+                                        <small class="text-muted">Código: ${producto.idProducto}</small>
+                                    </div>
+                                </div>
+                                <div class="text-end">
+                                    <div>${producto.cantidad} x $${producto.precioUnitario}</div>
+                                    <strong>$${producto.cantidad * producto.precioUnitario}</strong>
+                                </div>
+                            </div>
+                        `).join('')}
+                        
+                        <div class="details-total">
+                            <span>Total:</span>
+                            <span>$${pedido.total}</span>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <h5>Resumen</h5>
+                            <p><strong>Productos:</strong> ${pedido.cantidadProductos}</p>
+                            <p><strong>ID Usuario:</strong> ${pedido.idUsuario}</p>
+                        </div>
+                    `;
+                    
+                    // Mostrar el panel
+                    document.getElementById('detailsPanel').classList.add('open');
+                    document.getElementById('detailsOverlay').classList.add('active');
+                } else {
+                    alert('Error: ' + data.message);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('Error al cargar detalles:', error);
+                alert('No se pudieron cargar los detalles del pedido');
+            }
+        });
+    } catch (error) {
+        console.error('Error inesperado:', error);
+        alert('Ocurrió un error inesperado');
+    }
+}
+
+// Función auxiliar para obtener color según estado
+function getEstadoBadgeColor(estado) {
+    const colores = {
+        'nuevo': 'primary',
+        'pendiente': 'warning',
+        'completado': 'success',
+        'cancelado': 'danger',
+        'No pagado': 'danger'
+    };
+    return colores[estado] || 'secondary';
+}
+
+// Función auxiliar para obtener nombre de imagen
+function getImageName(imagenesString) {
+    try {
+        // Si es un array en formato string, lo parseamos
+        const imagenes = JSON.parse(imagenesString);
+        return imagenes[0] ? imagenes[0] + '.jpg' : 'default.jpg';
+    } catch (e) {
+        // Si no se puede parsear, usamos el valor directamente
+        return imagenesString && imagenesString !== '[]' ? 
+               imagenesString.replace(/[\[\]"]/g, '') + '.jpg' : 'default.jpg';
+    }
+}
+
+
+
+
+// Función para cerrar el panel de detalles
+function closeDetails() {
+    document.getElementById('detailsPanel').classList.remove('open');
+    document.getElementById('detailsOverlay').classList.remove('active');
+}
+
+// Cerrar al hacer clic fuera del panel
+document.getElementById('detailsOverlay').addEventListener('click', closeDetails);
+</script>
+
+
+</body>
+
+</html>

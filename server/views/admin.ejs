@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <title>Admin panel</title>
+  <link href="/css/estilo.css" rel="stylesheet">
+</head>
+
+
+
+
+
+<body>
+
+
+  <div class="bar">
+    s
+  </div>
+
+  <div class="tbody">
+    <div class="menu">
+
+      <div class="btn" id="container-pedido">
+        <div id="btnPedidos" class="btnHeader" onclick="btnPedidos_Click('menuPedidos')">
+          <p>PEDIDOS</p>
+        </div>
+
+        <div class="acordion" id="menuPedidos">
+          <div class="acordion-item" onclick="selectOption('pedidos-bdd')">
+            <span>Historial</span>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="btn" id="container-productos">
+        <div id="btnProductos" class="btnHeader" onclick="btnPedidos_Click('menuProductos')">
+          <p>PRODUCTOS</p>
+        </div>
+
+        <div class="acordion" id="menuProductos">
+          <div class="acordion-item" onclick="selectOption('producto-agg')">
+            <span> AGREGAR</span>
+          </div>
+          <div class="acordion-item" onclick="selectOption('producto-bdd')">
+            <span>BASE DE DATOS</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="btn" id="container-categorias">
+        <div id="btnCategorias" class="btnHeader" onclick="btnPedidos_Click('menuCategorias')">
+          <p>CATEGORÍAS</p>
+        </div>
+
+        <div class="acordion" id="menuCategorias">
+          <div class="acordion-item" onclick="selectOption('Categorias-agg')">
+            <span> AGREGAR</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="btn" id="container-mensajes">
+        <div id="btnMensajes" class="btnHeader" onclick="btnPedidos_Click('menuREPROTES')">
+          <p>REPORTES</p>
+        </div>
+        <div class="acordion" id="menuREPROTES">
+          <div class="acordion-item" onclick="selectOption('reportes-get')">
+            <span>GENERAR REPORTES</span>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="btn" id="container-mensajes">
+        <div id="btnMensajes" class="btnHeader" onclick="btnPedidos_Click('menuMensajes')">
+          <p>MENSAJES</p>
+        </div>
+
+        <div class="acordion" id="menuMensajes">
+          <div class="acordion-item" onclick="selectOption('mensajes-mostrar')">
+            <span>VER MENSAJES</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="main">
+
+
+      <div class="container-form" id="forms-productos">
+        <div class="form" id="producto-bdd">
+          <h2>Base de datos: productos</h2>
+          <div class="container-gb">
+            <div class="pareja barra-larga">
+              <input type="text" id="bdProductos-nombre" placeholder="¿Qué busco?">
+            </div>
+          </div>
+          <br>
+          <div class="container-gb-column">
+            <table id="bdProductos-tabla">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nombre</th>
+                  <th>Estado</th>
+                  <th>Precio</th>
+                  <th>Cantidad</th>
+                </tr>
+              </thead>
+              <tbody id="bdProductos-cuerpo">
+                <!-- Datos dinámicos -->
+              </tbody>
+            </table>
+            <div id="context-menu" class="context-menu">
+              <ul>
+                <li class="menu-item ver"><i class="fas fa-eye"></i> Ver detalles</li>
+                <li class="menu-item editar"><i class="fas fa-edit"></i> Editar</li>
+                <li class="menu-item eliminar"><i class="fas fa-trash-alt"></i> Eliminar</li>
+                <li class="menu-item separador"></li>
+                <li class="menu-item copiar"><i class="fas fa-copy"></i> Copiar ID</li>
+              </ul>
+            </div>
+          </div>
+
+          <br>
+          <div class="container-gb-left">
+            <div class="nav-buttons">
+              <button id="bdProductos-anterior" class="nav-btn retroceder">
+                <i class="fas fa-chevron-left"></i> -30
+              </button>
+              <span id="bdProductos-contador" class="contador">1</span>
+              <button id="bdProductos-siguiente" class="nav-btn adelantar">
+                <i class="fas fa-chevron-right"></i> +30
+              </button>
+            </div>
+          </div>
+        </div>
+        <!--Listo-->
+
+        <div class="form" id="producto-agg">
+          <h2>Agregar productos</h2>
+          <div class="container-gb">
+            <div class="pareja">
+              <p class="required">Nombre</p>
+              <input type="text" id="aggproducto-nombre" name="nombre" placeholder="Motor 6cc">
+            </div>
+
+            <div class="pareja">
+              <p>Descripción</p>
+              <input type="text" id="aggproducto-descripcion" class="txtGrande" placeholder="Detalles">
+            </div>
+
+            <div class="pareja">
+              <p class="required">Precio</p>
+              <input type="number" id="aggproducto-precio" step="0.01" placeholder="0$">
+            </div>
+
+            <div class="pareja">
+              <p>Precio Subrayado</p>
+              <input type="number" id="aggproducto-preciotachado" step="0.01" placeholder="0$">
+            </div>
+
+            <div class="pareja">
+              <p class="required">Imagenes</p>
+              <div class="file-input-container">
+                <input type="file" id="aggproducto-imagenes" name="imagenes" accept=".jpg" multiple>
+                <label for="aggproducto-imagenes" class="file-input-label">Seleccionar imágenes</label>
+                <span class="file-input-text" id="aggproducto-filechosen">No hay archivos seleccionados</span>
+              </div>
+            </div>
+
+            <div class="pareja">
+              <p>Estado</p>
+              <select id="aggproducto-estado">
+                <option value="1">Activo</option>
+                <option value="0">Desactivo</option>
+              </select>
+            </div>
+
+            <div class="pareja">
+              <p class="required">Cantidad</p>
+              <input type="number" id="aggproducto-cantidad" step="1" placeholder="0 unit">
+            </div>
+
+            <div class="pareja">
+              <p>Peso</p>
+              <input type="number" id="aggproducto-peso" step="0.01" placeholder="0kg">
+            </div>
+
+            <div class="pareja">
+              <p class="required">Categorias</p>
+              <select id="aggproducto-categorias">
+                <option value="1">Ninguna</option>
+              </select>
+            </div>
+
+            <div class="pareja">
+              <p>Color</p>
+              <input type="text" id="aggproducto-color" placeholder="Sin color">
+            </div>
+
+            <div class="pareja">
+              <p>Marca</p>
+              <input type="text" id="aggproducto-marca" placeholder="Marca">
+            </div>
+
+          </div>
+
+          <br>
+
+          <div class="container-gb-left">
+            <button type="button" id="aggproducto-btn">Agregar</button>
+          </div>
+        </div>
+
+        <!--Listo-->
+
+      </div>
+
+
+
+      <!--
+      <div class="container-form">
+        <div class="form">
+          hola2
+        </div>
+      </div>
+    -->
+
+
+
+
+      <div class="container-form" id="forms-pedidos">
+        <div class="form" id="pedidos-bdd">
+          <h2><i class="fas fa-shopping-cart"></i> Gestión de Pedidos</h2>
+
+          <!-- Filtros -->
+          <div class="filtros-pedidos">
+            <div class="filtros-grid">
+              <div class="pareja">
+                <p>Estado:</p>
+                <select id="filtro-estado">
+                  <option value="todos">Todos los estados</option>
+                  <option value="nuevo">nuevo</option>
+                  <option value="completado">Completado</option>
+                  <option value="No pagado">No pagado</option>
+                  <option value="En espera">En espera</option>
+                  <option value="cancelado">Cancelado</option>
+                </select>
+              </div>
+
+              <div class="pareja">
+                <p>Buscar:</p>
+                <input type="text" id="filtro-busqueda" placeholder="Nombre, cédula, apellido...">
+              </div>
+
+              <div class="pareja">
+                <p>Items por página:</p>
+                <select id="filtro-limite">
+                  <option value="10">10</option>
+                  <option value="30" selected>30</option>
+                  <option value="50">50</option>
+                  <option value="100">100</option>
+                </select>
+              </div>
+
+              <div class="pareja">
+                <button id="btn-aplicar-filtros" class="btn-accion" style="background: #4caf50; color: white;">
+                  <i class="fas fa-filter"></i> Aplicar Filtros
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Lista de pedidos -->
+          <div id="lista-pedidos">
+            <div class="cargando">Cargando pedidos...</div>
+          </div>
+
+          <!-- Paginación -->
+          <div class="container-gb-center">
+            <div class="nav-buttons">
+              <button id="btn-pagina-anterior" class="nav-btn retroceder">
+                <i class="fas fa-chevron-left"></i> Anterior
+              </button>
+              <span id="contador-pagina" class="contador">Página 1</span>
+              <button id="btn-pagina-siguiente" class="nav-btn adelantar">
+                Siguiente <i class="fas fa-chevron-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!--CATEGORIAS-->
+      <div class="container-form" id="forms-categorias">
+        <!--Listo-->
+        <div class="form" id="Categorias-agg">
+          <h2>Agregar categorías</h2>
+          <div class="container-gb">
+            <div class="pareja">
+              <p class="required">Nombre</p>
+              <input type="text" id="aggcategoria-nombre" name="nombre-categoria" placeholder="categoria">
+            </div>
+
+            <div class="pareja">
+              <p class="required">Imagenes</p>
+              <div class="file-input-container">
+                <input type="file" id="aggcategoria-imagenes" name="imagenes-categoria" accept=".png">
+                <label for="aggcategoria-imagenes" class="file-input-label">Seleccionar image</label>
+                <span class="file-input-text" id="aggcategoria-filechosen">No hay archivos seleccionados</span>
+              </div>
+            </div>
+
+            <div class="pareja">
+              <p>Estado</p>
+              <select id="aggcategoria-estado">
+                <option value="1">Activo</option>
+                <option value="0">Desactivo</option>
+              </select>
+            </div>
+
+          </div>
+
+          <br>
+
+          <div class="container-gb-left">
+            <button type="button" id="aggcategoria-btn">Agregar</button>
+          </div>
+        </div>
+        <!--Listo-->
+      </div>
+
+      <!--  REPROTES -->
+      <div class="container-form">
+
+
+        <div class="form " id="reportes-get">
+          <h2>Generar reportes</h2>
+          <div class="container-gb">
+
+            <div class="pareja" style="width: 100%;">
+              <p>Tipo de reporte</p>
+              <select id="getreporte-tipo" style="width: 100%;">
+                <option value="Stock bajo">Stock bajo</option>
+                <option value="Ventas del mes">Ventas del mes</option>
+                <option value="Ventas del dia">Ventas del dia</option>
+
+              </select>
+            </div>
+
+
+          </div>
+          <div class="container-gb">
+            <div id="loader" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000;">
+              <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border-radius: 5px;">
+                ⏳ Generando reporte, por favor espere...
+              </div>
+            </div>
+          </div>
+          <br>
+
+          <div class="container-gb-left">
+            <button type="button" id="getreporte-btn" onclick="btnGetReportes()">Generar</button>
+            <button type="button" id="viewreporte-btn" onclick="btnGetReportes('vizualizar')">Visualizar</button>
+          </div>
+        </div>
+
+        <!--Listo-->
+
+      </div>
+
+      <div class="container-form"" id=" content-container">
+        <div class="form" id="mensajes-mostrar">
+
+          <div id="ver" >
+            <h2>Mensajes de Contacto</h2>
+            <div class="table-responsive">
+              <table class="table table-striped table-hover">
+                <thead>
+                  <tr>
+                    <th>Nombre</th>
+                    <th>Correo</th>
+                    <th>Asunto</th>
+                    <th>Mensaje</th>
+                    <th>Fecha</th>
+                  </tr>
+                </thead>
+                <tbody id="messages-table-body">
+                </tbody>
+              </table>
+            </div>
+            <p id="no-messages-alert" style="display:none;">No hay mensajes para mostrar.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+
+
+  <div id="modal-detalles" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3><i class="fas fa-receipt"></i> Detalles Completos del Pedido</h3>
+        <button class="close-modal" onclick="cerrarModal()">×</button>
+      </div>
+      <div id="modal-contenido">
+        <!-- El contenido se cargará dinámicamente -->
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <div id="modal-detalle-overlay">
+
+  </div>
+
+
+
+  <div id="modal-detalle-producto">
+    <div class="modal-header">
+      <h2 id="modal-detalle-titulo">Detalles del Producto</h2>
+      <span class="modal-close-btn" onclick="cerrarDetalleProducto()">&times;</span>
+    </div>
+    <div class="modal-body">
+      <div class="modal-item">
+        <strong>ID:</strong> <span id="detalle-id"></span>
+      </div>
+      <div class="modal-item">
+        <strong>Nombre:</strong> <span id="detalle-nombre"></span>
+      </div>
+      <div class="modal-item">
+        <strong>Descripción:</strong> <span id="detalle-descripcion"></span>
+      </div>
+      <div class="modal-item">
+        <strong>Precio:</strong> <span id="detalle-precio"></span>
+      </div>
+      <div class="modal-item">
+        <strong>Precio original:</strong> <span id="detalle-precioOriginal"></span>
+      </div>
+      <div class="modal-item">
+        <strong>Cantidad:</strong> <span id="detalle-cantidad"></span>
+      </div>
+      <div class="modal-item">
+        <strong>Estado:</strong> <span id="detalle-estado"></span>
+      </div>
+
+
+      <div class="modal-item">
+        <strong>Marca:</strong> <span id="detalle-Marca"></span>
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+
+  <div id="modal-edicion-overlay"></div>
+  <div id="modal-edicion-producto">
+    <div class="modal-header">
+      <h2 id="modal-edicion-titulo">Editar Producto</h2>
+      <span class="modal-close-btn" onclick="cerrarModalEdicion()">&times;</span>
+    </div>
+    <div class="modal-body">
+      <div class="modal-item">
+        <strong>ID:</strong> <input type="text" id="edit-id" readonly>
+      </div>
+      <div class="modal-item">
+        <strong>Nombre:</strong> <input type="text" id="edit-nombre">
+      </div>
+      <div class="modal-item">
+        <strong>Descripción:</strong> <input type="text" id="edit-descripcion">
+      </div>
+      <div class="modal-item">
+        <strong>Precio:</strong> <input type="number" id="edit-precio">
+      </div>
+      <div class="modal-item">
+        <strong>Precio Original:</strong> <input type="number" id="edit-preciotachado">
+      </div>
+      <div class="modal-item">
+        <strong>Stock:</strong> <input type="number" id="edit-stock">
+      </div>
+      <div class="modal-item">
+        <strong>Estado:</strong>
+        <select id="edit-estado">
+          <option value="1">Activo</option>
+          <option value="0">Desactivo</option>
+        </select>
+      </div>
+      <div class="modal-item">
+        <strong>Peso:</strong> <input type="number" id="edit-peso">
+      </div>
+      <div class="modal-item">
+        <strong>Marca:</strong> <input type="text" id="edit-marca">
+      </div>
+      <div class="modal-actions">
+        <button type="button" id="guardar-edicion-btn" onclick="guardarEdicion()">Guardar Cambios</button>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <style>
+    #viewReport-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      /* Fondo oscuro semitransparente */
+      display: none;
+      /* Oculto por defecto */
+      z-index: 999;
+      /* Asegura que esté encima de todo */
+    }
+
+    #viewReport-content {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      /* Centra el modal */
+      width: 80%;
+      /* 80% del ancho del viewport */
+      height: 90%;
+      /* 90% del alto del viewport */
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      display: none;
+      /* Oculto por defecto */
+      z-index: 1000;
+      /* Encima del overlay */
+      padding: 20px;
+      box-sizing: border-box;
+      /* Incluye padding en el tamaño */
+      overflow-y: auto;
+      /* Permite scroll si el contenido es grande */
+    }
+
+    #viewReport-close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 30px;
+      color: #555;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    #viewReport-close-btn:hover {
+      color: #000;
+    }
+  </style>
+
+  <div id="viewReport-overlay"></div>
+  <div id="viewReport-content">
+    <button id="viewReport-close-btn" onclick="viewReportHide()">&times;</button>
+    <h2>Reporte</h2>
+  </div>
+  <script>
+    // Funciones para mostrar y ocultar el div
+    function viewReportShow() {
+      document.getElementById('viewReport-overlay').style.display = 'block';
+      document.getElementById('viewReport-content').style.display = 'block';
+    }
+
+    function viewReportHide() {
+      document.getElementById('viewReport-overlay').style.display = 'none';
+      document.getElementById('viewReport-content').style.display = 'none';
+
+      while (document.getElementById('viewReport-content').children.length > 3) {
+        document.getElementById('viewReport-content').children[3].remove();
+      }
+
+
+    }
+
+    // Event listener para el botón de cerrar
+    document.getElementById('viewReport-close-btn').addEventListener('click', viewReportHide);
+  </script>
+
+
+
+</body>
+
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+<script>
+  function redirigirSeccion(p) {
+    window.location.href = p;
+  }
+
+
+
+  let paginaActual = 1;
+  let totalPaginas = 1;
+  let filtrosActuales = {
+    estado: 'todos',
+    busqueda: '',
+    limite: 30
+  };
+
+  $(document).ready(function() {
+    cargarPedidos();
+
+    $('#btn-aplicar-filtros').click(cargarPedidos);
+    $('#btn-pagina-anterior').click(() => cambiarPagina(paginaActual - 1));
+    $('#btn-pagina-siguiente').click(() => cambiarPagina(paginaActual + 1));
+
+    $('#filtro-estado, #filtro-busqueda, #filtro-limite').change(function() {
+      filtrosActuales = {
+        estado: $('#filtro-estado').val(),
+        busqueda: $('#filtro-busqueda').val(),
+        limite: parseInt($('#filtro-limite').val())
+      };
+    });
+  });
+
+  function cargarPedidos() {
+    $('#lista-pedidos').html('<div class="cargando">Cargando pedidos...</div>');
+
+    $.ajax({
+      url: '/admin/pedidos',
+      method: 'GET',
+      data: {
+        ...filtrosActuales,
+        pagina: paginaActual
+      },
+      success: function(response) {
+        if (response.success) {
+          mostrarPedidos(response);
+        } else {
+          $('#lista-pedidos').html('<div class="error">Error: ' + response.message + '</div>');
+        }
+      },
+      error: function() {
+        $('#lista-pedidos').html('<div class="error">Error al cargar los pedidos</div>');
+      }
+    });
+  }
+
+  function mostrarPedidos(data) {
+    paginaActual = data.pagina;
+    totalPaginas = data.totalPaginas;
+
+    $('#contador-pagina').text(`Página ${paginaActual} de ${totalPaginas}`);
+    $('#btn-pagina-anterior').prop('disabled', paginaActual === 1);
+    $('#btn-pagina-siguiente').prop('disabled', paginaActual === totalPaginas);
+
+    if (data.pedidos.length === 0) {
+      $('#lista-pedidos').html('<div class="no-resultados">No se encontraron pedidos</div>');
+      return;
+    }
+
+    let html = '';
+    data.pedidos.forEach(pedido => {
+      html += `
+                    <div class="pedido-card">
+                        <div class="pedido-header">
+                            <span class="pedido-id">Pedido #${pedido._id.toString().substring(0, 8)}</span>
+                            <span class="estado-badge estado-${pedido.estado.toLowerCase().replace(' ', '-')}">
+                                ${pedido.estado}
+                            </span>
+                        </div>
+                        
+                        <div class="pedido-info">
+                            <div class="info-item">
+                                <strong>Cliente:</strong><br>
+                                ${pedido.datosPago?.nombres || 'N/A'} ${pedido.datosPago?.apellidos || ''}
+                            </div>
+                            <div class="info-item">
+                                <strong>Cédula:</strong><br>
+                                ${pedido.datosPago?.cedula || 'N/A'}
+                            </div>
+                            <div class="info-item">
+                                <strong>Total:</strong><br>
+                                $${pedido.total?.toFixed(2) || '0.00'}
+                            </div>
+                            <div class="info-item">
+                                <strong>Fecha:</strong><br>
+                                ${new Date(pedido.fechaCreacion).toLocaleDateString()}
+                            </div>
+                        </div>
+                        
+                        <div class="acciones-pedido">
+                            <button class="btn-accion" style="background: #2196f3; color: white;" 
+                                onclick="verDetalles('${pedido._id}')">
+                                <i class="fas fa-eye"></i> Ver Detalles
+                            </button>
+                            <select onchange="cambiarEstado('${pedido._id}', this.value)" 
+                                style="padding: 6px; border-radius: 4px;">
+                                <option value="">Cambiar estado</option>
+                                <option value="todos">Todos los estados</option>
+                                <option value="nuevo">nuevo</option>
+                               <option value="completado">Completado</option>
+                               <option value="No pagado">No pagado</option>
+                                <option value="en proceso">En espera</option>
+                                <option value="cancelado">Cancelado</option>
+                            </select>
+                        </div>
+                    </div>
+                `;
+    });
+
+    $('#lista-pedidos').html(html);
+  }
+
+  function cambiarPagina(nuevaPagina) {
+    if (nuevaPagina >= 1 && nuevaPagina <= totalPaginas) {
+      paginaActual = nuevaPagina;
+      cargarPedidos();
+    }
+  }
+
+
+
+  function verDetalles(idPedido) {
+    console.log('Solicitando detalles del pedido:', idPedido);
+
+    // Mostrar loading en el modal
+    $('#modal-contenido').html(`
+        <div style="text-align: center; padding: 40px;">
+            <i class="fas fa-spinner fa-spin" style="font-size: 40px; color: #2196f3;"></i>
+            <p style="margin-top: 20px;">Cargando detalles del pedido...</p>
+        </div>
+    `);
+    $('#modal-detalles').show();
+
+    $.ajax({
+      url: '/admin/pedidos/' + idPedido,
+      method: 'GET',
+      timeout: 10000, // 10 segundos timeout
+      success: function(response) {
+        console.log('Respuesta del servidor:', response);
+
+        if (response.success) {
+          mostrarModalDetalles(response.pedido);
+        } else {
+          $('#modal-contenido').html(`
+                    <div style="text-align: center; padding: 40px; color: #f44336;">
+                        <i class="fas fa-exclamation-triangle" style="font-size: 40px;"></i>
+                        <h4>Error al cargar los detalles</h4>
+                        <p>${response.message || 'Error desconocido'}</p>
+                        <button onclick="cerrarModal()" style="margin-top: 20px; padding: 10px 20px; background: #f44336; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                            Cerrar
+                        </button>
+                    </div>
+                `);
+        }
+      },
+      error: function(xhr, status, error) {
+        console.error('Error en la solicitud:', error);
+        $('#modal-contenido').html(`
+                <div style="text-align: center; padding: 40px; color: #f44336;">
+                    <i class="fas fa-exclamation-triangle" style="font-size: 40px;"></i>
+                    <h4>Error de conexión</h4>
+                    <p>No se pudo cargar los detalles del pedido. Verifica tu conexión e intenta nuevamente.</p>
+                    <p><small>Error: ${error || 'Desconocido'}</small></p>
+                    <button onclick="cerrarModal()" style="margin-top: 20px; padding: 10px 20px; background: #f44336; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                        Cerrar
+                    </button>
+                </div>
+            `);
+      }
+    });
+  }
+
+
+
+
+  function mostrarModalDetalles(pedido) {
+    console.log('Mostrando detalles del pedido:', pedido);
+
+    const formatFecha = (fecha) => {
+      if (!fecha) return 'N/A';
+      return new Date(fecha).toLocaleString('es-ES', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+    };
+
+    let html = `
+        <div class="info-grid">
+            <div class="detalles-section">
+                <h4><i class="fas fa-user"></i> Información del Cliente</h4>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <strong>Nombre completo:</strong>
+                        ${pedido.datosPago?.nombres || 'N/A'} ${pedido.datosPago?.apellidos || ''}
+                    </div>
+                    <div class="info-item">
+                        <strong>Cédula/RIF:</strong>
+                        ${pedido.datosPago?.cedula || 'N/A'}
+                    </div>
+                    <div class="info-item">
+                        <strong>Teléfono:</strong>
+                        ${pedido.datosPago?.telefono || 'N/A'}
+                    </div>
+                    <div class="info-item">
+                        <strong>Email:</strong>
+                        ${pedido.datosPago?.correo || pedido.datosPago?.email || 'N/A'}
+                    </div>
+                </div>
+            </div>
+
+            <div class="detalles-section">
+                <h4><i class="fas fa-shopping-cart"></i> Información del Pedido</h4>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <strong>ID del Pedido:</strong>
+                        ${pedido._id}
+                    </div>
+                    <div class="info-item">
+                        <strong>Estado:</strong>
+                        <span class="estado-badge estado-${pedido.estado.toLowerCase().replace(' ', '-')}">
+                            ${pedido.estado}
+                        </span>
+                    </div>
+                    <div class="info-item">
+                        <strong>Total:</strong>
+                        $${pedido.total?.toFixed(2) || '0.00'}
+                    </div>
+                    <div class="info-item">
+                        <strong>Método de pago:</strong>
+                        ${pedido.metodoPago || 'N/A'}
+                    </div>
+                    <div class="info-item">
+                        <strong>Referencia de pago:</strong>
+                        ${pedido.datosPago?.referencia || 'N/A'}
+                    </div>
+                    <div class="info-item">
+                        <strong>Fecha creación:</strong>
+                        ${formatFecha(pedido.fechaCreacion)}
+                    </div>
+                    <div class="info-item">
+                        <strong>Fecha finalización:</strong>
+                        ${formatFecha(pedido.fechaFinalizacion)}
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+
+    // ★★★ SECCIÓN DE MÉTODO DE ENVÍO ★★★
+    html += `
+        <div class="detalles-section">
+            <h4><i class="fas fa-truck"></i> Método de Envío</h4>
+            <div class="info-grid">
+    `;
+
+    if (pedido.datosPago?.retiroTienda) {
+      html += `
+            <div class="info-item" style="background: #e8f5e8; border-left: 4px solid #4caf50;">
+                <strong style="color: #2e7d32;">🚗 Retiro en Tienda</strong>
+                <p>El cliente retirará el pedido personalmente en la tienda</p>
+            </div>
+        `;
+    } else if (pedido.datosPago?.envioAgencia) {
+      html += `
+            <div class="info-item" style="background: #e3f2fd; border-left: 4px solid #2196f3;">
+                <strong style="color: #1565c0;">📦 Envío por Agencia</strong>
+                <p>El pedido será enviado a través de agencia de envíos</p>
+            </div>
+        `;
+    } else {
+      html += `
+            <div class="info-item">
+                <strong>Método de envío:</strong>
+                No especificado
+            </div>
+        `;
+    }
+
+    html += `</div></div>`;
+
+    // ★★★ SECCIÓN DE DATOS DE ENVÍO/AGENCIA ★★★
+    if (pedido.datosPago?.datosEnvio && Object.keys(pedido.datosPago.datosEnvio).length > 0) {
+      html += `
+            <div class="detalles-section">
+                <h4><i class="fas fa-map-marker-alt"></i> Datos de Envío ${pedido.datosPago.envioAgencia ? 'por Agencia' : ''}</h4>
+                <div class="info-grid">
+        `;
+
+      // Mostrar todos los campos de datosEnvio de forma organizada
+      const datosEnvio = pedido.datosPago.datosEnvio;
+
+      if (datosEnvio.nombre || datosEnvio.apellido) {
+        html += `
+                <div class="info-item">
+                    <strong>Destinatario:</strong>
+                    ${datosEnvio.nombre || ''} ${datosEnvio.apellido || ''}
+                </div>
+            `;
+      }
+
+      if (datosEnvio.correo) {
+        html += `
+                <div class="info-item">
+                    <strong>Email:</strong>
+                    ${datosEnvio.correo}
+                </div>
+            `;
+      }
+
+      if (datosEnvio.telefono) {
+        html += `
+                <div class="info-item">
+                    <strong>Teléfono contacto:</strong>
+                    ${datosEnvio.telefono}
+                </div>
+            `;
+      }
+
+      if (datosEnvio.agencia) {
+        html += `
+                <div class="info-item">
+                    <strong>Agencia de envío:</strong>
+                    ${datosEnvio.agencia}
+                </div>
+            `;
+      }
+
+      if (datosEnvio.oficinaAgencia) {
+        html += `
+                <div class="info-item">
+                    <strong>Oficina de agencia:</strong>
+                    ${datosEnvio.oficinaAgencia}
+                </div>
+            `;
+      }
+
+      if (datosEnvio.direccion) {
+        html += `
+                <div class="info-item">
+                    <strong>Dirección principal:</strong>
+                    ${datosEnvio.direccion}
+                </div>
+            `;
+      }
+
+      if (datosEnvio.direccionAlterna) {
+        html += `
+                <div class="info-item">
+                    <strong>Dirección alterna:</strong>
+                    ${datosEnvio.direccionAlterna}
+                </div>
+            `;
+      }
+
+      if (datosEnvio.estado) {
+        html += `
+                <div class="info-item">
+                    <strong>Estado:</strong>
+                    ${datosEnvio.estado}
+                </div>
+            `;
+      }
+
+      if (datosEnvio.ciudad) {
+        html += `
+                <div class="info-item">
+                    <strong>Ciudad:</strong>
+                    ${datosEnvio.ciudad}
+                </div>
+            `;
+      }
+
+      // Mostrar cualquier otro campo que pueda existir
+      Object.entries(datosEnvio).forEach(([key, value]) => {
+        if (value && !['nombre', 'apellido', 'correo', 'telefono', 'agencia', 'oficinaAgencia', 'direccion', 'direccionAlterna', 'estado', 'ciudad'].includes(key)) {
+          const label = key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
+          html += `
+                    <div class="info-item">
+                        <strong>${label}:</strong>
+                        ${value}
+                    </div>
+                `;
+        }
+      });
+
+      html += `</div></div>`;
+    }
+
+    // ★★★ SECCIÓN DE PRODUCTOS ★★★
+    html += `
+        <div class="detalles-section">
+            <h4><i class="fas fa-box"></i> Productos (${pedido.productos?.length || 0})</h4>
+    `;
+
+    if (pedido.productos && pedido.productos.length > 0) {
+      pedido.productos.forEach((producto, index) => {
+        const subtotal = (producto.cantidad * producto.precioUnitario).toFixed(2);
+        html += `
+                <div class="producto-detalle">
+                    <div class="producto-info">
+                        <strong>${index + 1}. ${producto.nombre || 'Producto ' + producto.idProducto}</strong>
+                        <div style="font-size: 14px; color: #666; margin-top: 5px;">
+                            Código: ${producto.idProducto} | 
+                            Cantidad: ${producto.cantidad} | 
+                            Precio unitario: $${producto.precioUnitario?.toFixed(2) || '0.00'}
+                        </div>
+                    </div>
+                    <div class="producto-precio">
+                        <strong>Subtotal: $${subtotal}</strong>
+                    </div>
+                </div>
+            `;
+      });
+
+      // Total general
+      html += `
+            <div style="text-align: right; margin-top: 20px; padding: 15px; background: #e8f5e8; border-radius: 6px;">
+                <strong style="font-size: 18px; color: #2e7d32;">
+                    TOTAL GENERAL: $${pedido.total?.toFixed(2) || '0.00'}
+                </strong>
+            </div>
+        `;
+    } else {
+      html += `<p>No hay productos en este pedido.</p>`;
+    }
+
+    html += `</div>`;
+
+    // ★★★ SECCIÓN DE DATOS ADICIONALES DE PAGO ★★★
+    if (pedido.datosPago) {
+      html += `
+            <div class="detalles-section">
+                <h4><i class="fas fa-credit-card"></i> Información Adicional de Pago</h4>
+                <div class="info-grid">
+        `;
+
+      // Mostrar campos adicionales que no hayamos mostrado antes
+      const camposMostrados = ['nombres', 'apellidos', 'cedula', 'telefono', 'correo', 'email', 'referencia', 'retiroTienda', 'envioAgencia', 'datosEnvio'];
+
+      Object.entries(pedido.datosPago).forEach(([key, value]) => {
+        if (value && !camposMostrados.includes(key)) {
+          const label = key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
+          html += `
+                    <div class="info-item">
+                        <strong>${label}:</strong>
+                        ${value}
+                    </div>
+                `;
+        }
+      });
+
+      html += `</div></div>`;
+    }
+
+    $('#modal-contenido').html(html);
+    $('#modal-detalles').show();
+
+    $(document).on('keydown', function(e) {
+      if (e.key === 'Escape') {
+        cerrarModal();
+      }
+    });
+  }
+
+
+  function cerrarModal() {
+    $('#modal-detalles').hide();
+    $(document).off('keydown'); // Remover evento ESC
+  }
+
+  // También agrega esta función para mostrar/ocultar el modal correctamente
+  function toggleModal() {
+    $('#modal-detalles').toggle();
+  }
+
+
+
+
+  function cambiarEstado(idPedido, nuevoEstado) {
+    if (!nuevoEstado) return;
+
+    if (!confirm('¿Estás seguro de cambiar el estado del pedido?')) {
+      return;
+    }
+
+    $.ajax({
+      url: '/admin/pedidos/' + idPedido + '/estado',
+      method: 'PUT',
+      contentType: 'application/json',
+      data: JSON.stringify({
+        estado: nuevoEstado
+      }),
+      success: function(response) {
+        if (response.success) {
+          alert('Estado actualizado correctamente');
+          cargarPedidos();
+        } else {
+          alert('Error: ' + response.message);
+        }
+      }
+    });
+  }
+
+
+
+
+  // Agrega esto al final de tu script para debugging
+  $(document).ready(function() {
+    console.log('Script de pedidos cargado');
+
+    // Test: Verificar que la ruta /admin/pedidos existe
+    $.ajax({
+      url: '/admin/pedidos',
+      method: 'GET',
+      data: {
+        pagina: 1,
+        limite: 1
+      },
+      success: function(response) {
+        console.log('Conexión con servidor OK:', response);
+      },
+      error: function(xhr, status, error) {
+        console.error('Error conectando con servidor:', error);
+        alert('Error: No se puede conectar con el servidor. Verifica la consola para más detalles.');
+      }
+    });
+  });
+</script>
+
+
+<!--REPROTES-->
+<script>
+  function btnGetReportes(type = 'descargar') {
+
+    const valor = document.querySelector('#getreporte-tipo').value;
+    if (type == 'vizualizar') {
+      vizualizarReporte(valor);
+      return 0;
+    }
+
+    //alert(valor);
+    descargarReporte(valor);
+  }
+
+
+  async function vizualizarReporte(tipoReporte) {
+    try {
+      // Mostrar loader
+      //mostrarLoader(true);
+
+      const response = await fetch('/admin/pdf/reportesView', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          tipo: tipoReporte
+        }),
+        credentials: 'include'
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Error en la generación del reporte');
+      }
+
+      // === CORRECCIÓN AQUÍ ===
+      // Lee el cuerpo de la respuesta como JSON
+      const data = await response.json();
+
+      const miDiv = document.getElementById('viewReport-content');
+
+      // Asigna el contenido HTML de la propiedad 'report'
+      miDiv.innerHTML += data.report;
+
+
+
+      document.getElementById('viewReport-overlay').style.display = 'block';
+      miDiv.style.display = 'block';
+
+
+
+      console.log('✅ Reporte visualizado');
+
+    } catch (error) {
+      console.error('❌ Error visualizando reporte:', error);
+      alert('Error: ' + error.message);
+    } finally {
+      // Ocultar loader
+      //mostrarLoader(false);
+    }
+  }
+
+
+
+
+  // Función para hacer la petición POST
+  async function descargarReporte(tipoReporte) {
+    try {
+      // Mostrar loader
+      mostrarLoader(true);
+
+      const response = await fetch('/admin/pdf/reportes', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          tipo: tipoReporte
+        }),
+        credentials: 'include' // Importante para las cookies de sesión
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Error en la generación del reporte');
+      }
+
+      // Obtener el nombre del archivo del header
+      const contentDisposition = response.headers.get('Content-Disposition');
+      let fileName = 'reporte.pdf';
+
+      if (contentDisposition) {
+        const fileNameMatch = contentDisposition.match(/filename="(.+)"/);
+        if (fileNameMatch && fileNameMatch[1]) {
+          fileName = fileNameMatch[1];
+        }
+      }
+
+      // Crear blob y descargar
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+
+      const link = document.createElement('a');
+      link.style.display = 'none';
+      link.href = url;
+      link.download = fileName;
+
+      document.body.appendChild(link);
+      link.click();
+
+      // Limpiar
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(link);
+
+      console.log('✅ Reporte descargado:', fileName);
+
+    } catch (error) {
+      console.error('❌ Error descargando reporte:', error);
+      alert('Error: ' + error.message);
+    } finally {
+      // Ocultar loader
+      mostrarLoader(false);
+    }
+  }
+
+  // Función para mostrar/ocultar loader
+  function mostrarLoader(mostrar) {
+    let loader = document.getElementById('loader-reporte');
+    if (!loader && mostrar) {
+      loader = document.createElement('div');
+      loader.id = 'loader-reporte';
+      loader.innerHTML = '⏳ Generando reporte...';
+      loader.style.position = 'fixed';
+      loader.style.top = '50%';
+      loader.style.left = '50%';
+      loader.style.transform = 'translate(-50%, -50%)';
+      loader.style.background = 'white';
+      loader.style.padding = '20px';
+      loader.style.border = '1px solid #ccc';
+      loader.style.borderRadius = '5px';
+      loader.style.zIndex = '1000';
+      document.body.appendChild(loader);
+    } else if (loader && !mostrar) {
+      document.body.removeChild(loader);
+    }
+  }
+</script>
+
+<script>
+  <%- embeddedJS %>
+</script>
+
+
+
+
+
+<script>
+
+
+</script>
+
+
+
+
+
+</html>

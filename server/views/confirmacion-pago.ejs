@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>MultiShop - Online Shop Website Template</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="Free HTML Templates" name="keywords">
+  <meta content="Free HTML Templates" name="description">
+
+  <!-- Favicon -->
+  <link href="img/favicon.ico" rel="icon">
+
+  <!-- Google Web Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Libraries Stylesheet -->
+  <link href="lib/animate/animate.min.css" rel="stylesheet">
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+  <!-- Customized Bootstrap Stylesheet -->
+  <link href="css/style.css" rel="stylesheet">
+  <style>
+    .panel-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .panel-overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .info-panel {
+      background-color: white;
+      width: 400px;
+      max-width: 90%;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      padding: 25px;
+      transform: scale(0.9);
+      transition: transform 0.3s ease;
+      position: relative;
+    }
+
+    .panel-overlay.show .info-panel {
+      transform: scale(1);
+    }
+
+    .panel-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      cursor: pointer;
+      font-size: 20px;
+      color: #888;
+      background: none;
+      border: none;
+      font-weight: bold;
+    }
+
+    .panel-title {
+      font-size: 22px;
+      margin-bottom: 20px;
+      color: #333;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .panel-content {
+      margin-bottom: 25px;
+    }
+
+    .info-text {
+      padding: 12px 15px;
+      margin-bottom: 12px;
+      background-color: #f9f9f9;
+      border-radius: 6px;
+      border-left: 4px solid #4CAF50;
+    }
+
+    .info-text.warning {
+      border-left-color: #FF9800;
+    }
+
+    .info-text.error {
+      border-left-color: #F44336;
+    }
+
+    .panel-buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .panel-button {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.2s;
+    }
+
+    .btn-primary {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: #3e8e41;
+    }
+
+    .btn-secondary {
+      background-color: #f1f1f1;
+      color: #333;
+    }
+
+    .btn-secondary:hover {
+      background-color: #e2e2e2;
+    }
+
+    .input-group {
+      margin-top: 20px;
+      text-align: left;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 16px;
+      transition: border-color 0.3s;
+    }
+
+    .input-group input:focus {
+      border-color: #3498db;
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <%- include('partials/header') %>
+
+
+  <div class="panel-overlay" id="info-panel-overlay">
+    <div class="info-panel">
+      <button class="panel-close" onclick="hideInfoPanel()">&times;</button>
+      <h2 class="panel-title">Detalles del Pago</h2>
+      <div class="panel-content">
+        <div class="info-text">
+          <strong>Venezuela:</strong> 0102
+        </div>
+        <div class="info-text">
+          <strong>Cédula:</strong> V-1234567
+        </div>
+        <div class="info-text">
+          <strong>Teléfono:</strong> 04121234567
+        </div>
+        <div class="info-text warning">
+          <strong>Monto:</strong> $20
+        </div>
+        <div class="input-group">
+          <label for="bank-reference">Referencia bancaria:</label>
+          <input type="text" id="bank-reference" placeholder="Ingrese su referencia bancaria">
+        </div>
+      </div>
+      <div class="panel-buttons">
+        <button class="panel-button btn-primary" onclick="markAsPaid()">Pagado</button>
+        <button class="panel-button btn-secondary" onclick="hideInfoPanel()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Breadcrumb Start -->
+  <div class="container-fluid">
+    <div class="col-12">
+      <nav class="breadcrumb bg-light mb-30">
+        <a class="breadcrumb-item text-dark" href="#">Inicio</a>
+        <a class="breadcrumb-item text-dark" href="#">Tienda</a>
+        <a class="breadcrumb-item text-dark" href="#">Pagos</a>
+        <span class="breadcrumb-item active">Confirmación</span>
+      </nav>
+    </div>
+  </div>
+  <!-- Breadcrumb End -->
+
+  <style>
+    /* Estilos para el contenedor */
+    .confirm-message-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 30vh;
+      /* Ocupa toda la altura de la ventana */
+      background-color: #f0f0f0;
+      font-family: sans-serif;
+      text-align: center;
+    }
+
+    /* Estilos para la caja del mensaje */
+    .confirm-message-box {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 40px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
+      width: 90%;
+    }
+
+    /* Estilos para el título */
+    .confirm-message-box h1 {
+      color: #333;
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+
+    /* Estilos para el párrafo */
+    .confirm-message-box p {
+      color: #666;
+      font-size: 1.2em;
+    }
+  </style>
+  <!-- Checkout Start -->
+  <div class="container-fluid">
+      <div class="confirm-message-container">
+        <div class="confirm-message-box">
+          <h1>¡Se está confirmando su pedido!</h1>
+          <p>Gracias por tu compra. Pronto recibirás una notificación.</p>
+        </div>
+      </div>
+  </div>
+  <!-- Checkout End -->
+
+  <!-- Footer Start -->
+  <%- include('partials/footer') %>
+  <!-- Footer End -->
+
+
+  <!-- Back to Top -->
+  <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+  <!-- JavaScript Libraries -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+  <script src="lib/easing/easing.min.js"></script>
+  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+  <!-- Contact Javascript File -->
+  <script src="mail/jqBootstrapValidation.min.js"></script>
+  <script src="mail/contact.js"></script>
+
+  <!-- Template Javascript -->
+  <script src="js/main.js"></script>
+  <%- include('partials/script-generals') %>
+  <script>
+    function showInfoPanel() {
+      const overlay = document.getElementById('info-panel-overlay');
+      overlay.classList.add('show');
+      document.body.style.overflow = 'hidden'; // Prevenir scroll
+    }
+
+    function hideInfoPanel() {
+      const overlay = document.getElementById('info-panel-overlay');
+      overlay.classList.remove('show');
+      document.body.style.overflow = ''; // Restaurar scroll
+    }
+
+    function markAsPaid() {
+      // Obtener el valor de la referencia bancaria
+      const bankReference = document.getElementById('bank-reference').value;
+
+      // Validar que se haya ingresado una referencia
+      if (!bankReference.trim()) {
+        showNotification('Por favor ingrese la referencia bancaria', 'error');
+        return;
+      }
+
+      // Aquí iría la lógica para procesar el pago con la referencia
+      showNotification(`Pago procesado correctamente. Referencia: ${bankReference}`, 'default');
+      hideInfoPanel();
+
+      // Opcional: Limpiar el campo para la próxima vez
+      document.getElementById('bank-reference').value = '';
+    }
+
+    // Cerrar el panel al hacer clic fuera del contenido
+    document.getElementById('info-panel-overlay').addEventListener('click', function(e) {
+      if (e.target === this) {
+        hideInfoPanel();
+      }
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+{
+  "name": "ecommercepaolo",
+  "version": "1.0.0",
+  "description": "+ html\r + css\r + JavaScript\r + Node Js\r + Express\r + MySql",
+  "main": "server/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnthonyBVivenes/EcommercePaolo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AnthonyBVivenes/EcommercePaolo/issues"
+  },
+  "homepage": "https://github.com/AnthonyBVivenes/EcommercePaolo#readme",
+  "dependencies": {
+    "axios": "^1.13.2",
+    "bcryptjs": "^3.0.3",
+    "cheerio": "^1.1.2",
+    "dotenv": "^16.5.0",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-fileupload": "^1.5.2",
+    "express-session": "^1.18.1",
+    "mongodb": "^6.17.0",
+    "mysql2": "^3.14.1",
+    "node-cron": "^4.2.1",
+    "nodemon": "^3.1.11",
+    "playwright": "^1.55.0",
+    "puppeteer": "^24.17.0",
+    "selenium-webdriver": "^4.35.0"
+  },
+  "devDependencies": {
+    "chai": "^6.0.1"
+  }
+}

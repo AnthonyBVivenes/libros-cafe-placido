@@ -1,0 +1,250 @@
+<div class="container-fluid">
+    <div class="row px-xl-5">
+      <div class="col-lg-8">
+        <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Datos del pago</span></h5>
+        <div class="bg-light p-30 mb-5">
+          <div class="row">
+            <div class="col-md-6 form-group">
+              <label>Nombres</label>
+              <input class="form-control" type="text" placeholder="Nombre">
+            </div>
+            <div class="col-md-6 form-group">
+              <label>Apellido</label>
+              <input class="form-control" type="text" placeholder="Apellido">
+            </div>
+            <div class="col-md-6 form-group">
+              <label>Cédula</label>
+              <input class="form-control" type="number" placeholder="cedula">
+            </div>
+            <div class="col-md-6 form-group">
+              <label>Correo(opcional)</label>
+              <input class="form-control" type="text" placeholder="ejemplo@gmail.com">
+            </div>
+            <div class="col-md-6 form-group">
+              <label>Número (Para contacto)</label>
+              <input class="form-control" type="text" placeholder="+123 456 789">
+            </div>
+            <div class="col-md-6 form-group">
+              <label>Dirección (opcional)</label>
+              <input class="form-control" type="text" placeholder="calle tal tal tal">
+            </div>
+            <!--
+                        <div class="col-md-6 form-group">
+                            <label>Address Line 2</label>
+                            <input class="form-control" type="text" placeholder="123 Street">
+                        </div>-->
+            <div class="col-md-6 form-group">
+              <label>Banco de la referencia</label>
+              <select class="custom-select">
+                <option selected disabled>Seleccione un banco</option>
+                <option>0102 BANCO DE VENEZUELA</option>
+                <option>0104 BANCO VENEZOLANO DE CREDITO</option>
+                <option>0105 BANCO MERCANTIL</option>
+                <option>0108 BBVA PROVINCIAL</option>
+                <option>0114 BANCARIBE</option>
+                <option>0115 BANCO EXTERIOR</option>
+                <option>0128 BANCO CARONI</option>
+                <option>0134 BANESCO</option>
+                <option>0137 BANCO SOFITASA</option>
+                <option>0138 BANCO PLAZA</option>
+                <option>0146 BANGENTE</option>
+                <option>0151 BANCO FONDO COMUN</option>
+                <option>0156 100% BANCO</option>
+                <option>0157 DELSUR BANCO UNIVERSAL</option>
+                <option>0163 BANCO DEL TESORO</option>
+                <option>0168 BANCRECER</option>
+                <option>0169 R4 BANCO MICROFINANCIERO C.A.</option>
+                <option>0171 BANCO ACTIVO</option>
+                <option>0172 BANCAMIGA BANCO UNIVERSAL, C.A.</option>
+                <option>0173 BANCO INTERNACIONAL DE DESARROLLO</option>
+                <option>0174 BANPLUS</option>
+                <option>0175 BANCO DIGITAL DE LOS TRABAJADORES, BANCO UNIVERSAL</option>
+                <option>0177 BANFANB</option>
+                <option>0178 N58 BANCO DIGITAL BANCO MICROFINANCIERO S A</option>
+                <option>0191 BANCO NACIONAL DE CREDITO</option>
+              </select>
+            </div>
+            <div class="col-md-6 form-group">
+              <label>Estado</label>
+              <select class="custom-select">
+                <option selected disabled>Seleccione un estado</option>
+                <option>Amazonas</option>
+                <option>Anzoátegui</option>
+                <option>Apure</option>
+                <option>Aragua</option>
+                <option>Barinas</option>
+                <option>Bolívar</option>
+                <option>Carabobo</option>
+                <option>Cojedes</option>
+                <option>Delta Amacuro</option>
+                <option>Distrito Capital</option>
+                <option>Falcón</option>
+                <option>Guárico</option>
+                <option>Lara</option>
+                <option>Mérida</option>
+                <option>Miranda</option>
+                <option>Monagas</option>
+                <option>Nueva Esparta</option>
+                <option>Portuguesa</option>
+                <option>Sucre</option>
+                <option>Táchira</option>
+                <option>Trujillo</option>
+                <option>Vargas</option>
+                <option>Yaracuy</option>
+                <option>Zulia</option>
+              </select>
+            </div>
+            <div class="col-md-6 form-group">
+              <label>Ciudad</label>
+              <input class="form-control" type="text" placeholder="Ciudad">
+            </div>
+            <div class="col-md-6 form-group">
+              <label>Sector/municipio</label>
+              <input class="form-control" type="text" placeholder="Sector/municipio">
+            </div>
+            <div class="col-md-12 form-group">
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="newaccount">
+                <label class="custom-control-label" for="newaccount">Retiro tienda(Barcelona)</label>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="shipto">
+                <label class="custom-control-label" for="shipto" data-toggle="collapse" data-target="#shipping-address">envíos por zoom/mrw</label>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+        <div class="collapse mb-5" id="shipping-address">
+          <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Formulario de envío</span></h5>
+          <div class="bg-light p-30">
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label>Nombre</label>
+                <input class="form-control" type="text" placeholder="Nombre">
+              </div>
+              <div class="col-md-6 form-group">
+                <label>Apellido</label>
+                <input class="form-control" type="text" placeholder="Apellido">
+              </div>
+              <div class="col-md-6 form-group">
+                <label>Correo</label>
+                <input class="form-control" type="text" placeholder="example@email.com">
+              </div>
+              <div class="col-md-6 form-group">
+                <label>Número (Para agencia)</label>
+                <input class="form-control" type="text" placeholder="+123 456 789">
+              </div>
+              <div class="col-md-6 form-group">
+                <label>Dirección</label>
+                <input class="form-control" type="text" placeholder="123 Street">
+              </div>
+              <div class="col-md-6 form-group">
+                <label>Dirección alterna</label>
+                <input class="form-control" type="text" placeholder="123 Street">
+              </div>
+              <div class="col-md-6 form-group">
+                <label>Agencia</label>
+                <select class="custom-select">
+                  <option selected>Selcione</option>
+                  <option>Zoom</option>
+                  <option>MRW</option>
+                </select>
+              </div>
+              <div class="col-md-6 form-group">
+                <label>Estado</label>
+                <select class="custom-select">
+                  <option selected disabled>Seleccione un estado</option>
+                  <option>Amazonas</option>
+                  <option>Anzoátegui</option>
+                  <option>Apure</option>
+                  <option>Aragua</option>
+                  <option>Barinas</option>
+                  <option>Bolívar</option>
+                  <option>Carabobo</option>
+                  <option>Cojedes</option>
+                  <option>Delta Amacuro</option>
+                  <option>Distrito Capital</option>
+                  <option>Falcón</option>
+                  <option>Guárico</option>
+                  <option>Lara</option>
+                  <option>Mérida</option>
+                  <option>Miranda</option>
+                  <option>Monagas</option>
+                  <option>Nueva Esparta</option>
+                  <option>Portuguesa</option>
+                  <option>Sucre</option>
+                  <option>Táchira</option>
+                  <option>Trujillo</option>
+                  <option>Vargas</option>
+                  <option>Yaracuy</option>
+                  <option>Zulia</option>
+                </select>
+              </div>
+              <div class="col-md-6 form-group">
+                <label>Ciudad</label>
+                <input class="form-control" type="text" placeholder="Barcelona">
+              </div>
+              <div class="col-md-6 form-group">
+                <label>Nombre/Código Oficina de la agencia</label>
+                <input class="form-control" type="text" placeholder="Oficina de preferencia">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Orden total</span></h5>
+        <div class="bg-light p-30 mb-5">
+          <div class="border-bottom">
+            <h6 class="mb-3">Productos</h6>
+            <% productos.forEach(producto => { %>
+            <div class="d-flex justify-content-between">
+              <p><%= producto.nombre %></p>
+              <p>$<%= producto.precio * producto.cantidad %></p>
+            </div>
+            <% }); %>
+          </div>
+          <div class="border-bottom pt-3 pb-2">
+            <div class="d-flex justify-content-between mb-3">
+              <h6>Subtotal</h6>
+              <h6>$<%= total %></h6>
+            </div>
+            <div class="d-flex justify-content-between">
+              <h6 class="font-weight-medium">Envio</h6>
+              <h6 class="font-weight-medium">$0</h6>
+            </div>
+          </div>
+          <div class="pt-2">
+            <div class="d-flex justify-content-between mt-2">
+              <h5>Total</h5>
+              <h5> $<%= total %></h5>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="mb-5">
+          <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Método de pago</span></h5>
+          <div class="bg-light p-30">
+            <div class="form-group">
+              <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" name="payment" id="paypal">
+                <label class="custom-control-label" for="paypal">Pago móvil</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" name="payment" id="directcheck">
+                <label class="custom-control-label" for="directcheck">Tranferencia bancaria</label>
+              </div>
+            </div>
+            <button class="btn btn-block btn-primary font-weight-bold py-3" onclick="showInfoPanel()">Registar pago</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

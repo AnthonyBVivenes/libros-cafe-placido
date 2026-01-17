@@ -1,0 +1,72 @@
+<script>
+    // Función para filtrar productos por precio
+function filtrarPorPrecio() {
+    // Obtener checkboxes seleccionados
+    const checkboxes = document.querySelectorAll('input[name="price-range"]:checked');
+    const precioAll = document.getElementById('price-all').checked;
+    
+    // Si "Todo" está seleccionado o no hay rangos seleccionados, mostrar todos
+    if (precioAll || checkboxes.length === 0) {
+        document.querySelectorAll('[data-price]').forEach(producto => {
+            producto.classList.remove('hidden');
+        });
+        return;
+    }
+    
+    // Obtener rangos seleccionados
+    const rangosSeleccionados = Array.from(checkboxes).map(checkbox => {
+        const [min, max] = checkbox.value.split('-').map(Number);
+        return { min, max };
+    });
+    
+    // Filtrar productos
+    document.querySelectorAll('[data-price]').forEach(producto => {
+        const precio = parseFloat(producto.getAttribute('data-price'));
+        const coincide = rangosSeleccionados.some(rango => 
+            precio >= rango.min && precio <= rango.max
+        );
+        
+        if (coincide) {
+            producto.classList.remove('hidden');
+        } else {
+            producto.classList.add('hidden');
+        }
+    });
+}
+
+// Función para manejar el checkbox "Todo"
+function manejarCheckboxTodo() {
+    const todoCheckbox = document.getElementById('price-all');
+    const otrosCheckboxes = document.querySelectorAll('input[name="price-range"]');
+    
+    todoCheckbox.addEventListener('change', function() {
+        if (this.checked) {
+            otrosCheckboxes.forEach(checkbox => {
+                checkbox.checked = false;
+            });
+            filtrarPorPrecio();
+        }
+    });
+    
+    otrosCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            if (this.checked) {
+                todoCheckbox.checked = false;
+            }
+            filtrarPorPrecio();
+        });
+    });
+}
+
+// Inicializar cuando el DOM esté cargado
+document.addEventListener('DOMContentLoaded', function() {
+    manejarCheckboxTodo();
+    
+    // Agregar event listeners a los checkboxes
+    document.querySelectorAll('input[name="price-range"]').forEach(checkbox => {
+        checkbox.addEventListener('change', filtrarPorPrecio);
+    });
+    
+    document.getElementById('price-all').addEventListener('change', filtrarPorPrecio);
+});
+</script>

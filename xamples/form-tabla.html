@@ -1,0 +1,37 @@
+<div class="form">
+    <h2>Base de datos: productos</h2>
+    <div class="container-gb">
+        <div class="pareja barra-larga">
+            <input type="text" id="bdProductos-nombre" placeholder="¿Qué busco?">
+        </div>
+    </div>
+    <br>
+    <div class="container-gb-column">
+        <table id="bdProductos-tabla">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Estado</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                </tr>
+            </thead>
+            <tbody id="bdProductos-cuerpo">
+                <!-- Datos dinámicos -->
+            </tbody>
+        </table>
+    </div>
+    <br>
+    <div class="container-gb-left">
+        <div class="nav-buttons">
+            <button id="bdProductos-anterior" class="nav-btn retroceder">
+                <i class="fas fa-chevron-left"></i> -30
+            </button>
+            <span id="bdProductos-contador" class="contador">1</span>
+            <button id="bdProductos-siguiente" class="nav-btn adelantar">
+                <i class="fas fa-chevron-right"></i> +30
+            </button>
+        </div>
+    </div>
+</div>

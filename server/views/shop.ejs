@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>MultiShop - Online Shop Website Template</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="Free HTML Templates" name="keywords">
+  <meta content="Free HTML Templates" name="description">
+
+  <!-- Favicon --> <base href="/">
+  <link href="img/favicon.ico" rel="icon">
+
+  <!-- Google Web Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Libraries Stylesheet -->
+  <link href="lib/animate/animate.min.css" rel="stylesheet">
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+  <!-- Customized Bootstrap Stylesheet -->
+  <link href="css/style.css" rel="stylesheet">
+  <%- include('styles/tiendacss') %>
+</head>
+
+<body>
+
+
+
+
+  <%- include('partials/header') %>
+
+
+  <!-- Breadcrumb Start -->
+  <div class="container-fluid">
+    <div class="row px-xl-5">
+      <div class="col-12">
+        <nav class="breadcrumb bg-light mb-30">
+          <a class="breadcrumb-item text-dark" href="index.html">Inicio</a>
+          <a class="breadcrumb-item text-dark" href="#">Tienda</a>
+          <span class="breadcrumb-item active">Lista de productos</span>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <!-- Breadcrumb End -->
+
+
+  <!-- Shop Start -->
+  <div class="container-fluid">
+    <div class="row px-xl-5">
+      <!-- Shop Sidebar Start -->
+      <div class="col-lg-3 col-md-4">
+        <!-- Price Start -->
+        <h5 class="section-title position-relative text-uppercase mb-3">
+          <span class="bg-secondary pr-3">Filtrar por precio</span>
+        </h5>
+        <div class="bg-light p-4 mb-30">
+          <form id="price-filter-form">
+            <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+              <input type="checkbox" class="custom-control-input" checked id="price-all" name="price-all">
+              <label class="custom-control-label" for="price-all">Todo</label>
+              <span class="badge border font-weight-normal" id="count-all">1000</span>
+            </div>
+            <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+              <input type="checkbox" class="custom-control-input" id="price-1" name="price-range" value="0-100">
+              <label class="custom-control-label" for="price-1">$0 - $100</label>
+              <span class="badge border font-weight-normal" id="count-1">150</span>
+            </div>
+            <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+              <input type="checkbox" class="custom-control-input" id="price-2" name="price-range" value="100-200">
+              <label class="custom-control-label" for="price-2">$100 - $200</label>
+              <span class="badge border font-weight-normal" id="count-2">295</span>
+            </div>
+            <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+              <input type="checkbox" class="custom-control-input" id="price-3" name="price-range" value="200-300">
+              <label class="custom-control-label" for="price-3">$200 - $300</label>
+              <span class="badge border font-weight-normal" id="count-3">246</span>
+            </div>
+            <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+              <input type="checkbox" class="custom-control-input" id="price-4" name="price-range" value="300-400">
+              <label class="custom-control-label" for="price-4">$300 - $400</label>
+              <span class="badge border font-weight-normal" id="count-4">145</span>
+            </div>
+            <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between">
+              <input type="checkbox" class="custom-control-input" id="price-5" name="price-range" value="400-500">
+              <label class="custom-control-label" for="price-5">$400 - $500</label>
+              <span class="badge border font-weight-normal" id="count-5">168</span>
+            </div>
+          </form>
+        </div>
+        <!-- Price End -->
+      </div>
+      <!-- Shop Sidebar End -->
+
+
+      <!-- Shop Product Start -->
+      <div class="col-lg-9 col-md-8">
+
+
+        <div class="row pb-3" id="lista-resultado">
+          <!-- MODO NORMAL: Si hay productos -->
+          <% if (productos && productos.length > 0) { %>
+          <% productos.forEach(producto => { %>
+          <div class="col-lg-4 col-md-6 col-sm-6 pb-1" data-price="<%= producto.precio.toFixed(2) %>">
+            <div class="product-item bg-light mb-4">
+              <div class="product-img position-relative overflow-hidden">
+                <img class="img-fluid w-100" src="<%= producto.imagenPrincipal %>" alt="<%= producto.nombre %>">
+                <div class="product-action">
+                  <!-- onclick="aggproducto(${producto.codigo})"-->
+                  <a class="btn btn-outline-dark btn-square" onclick="aggproducto(<%= producto.codigo %>)"><i class="fa fa-shopping-cart"></i></a>
+                  <a class="btn btn-outline-dark btn-square" onclick="aggproductoFav(<%= producto.codigo %>)"><i class="far fa-heart"></i></a>
+                  <!--<a class="btn btn-outline-dark btn-square"><i class="fa fa-sync-alt"></i></a>-->
+                  <a class="btn btn-outline-dark btn-square" href="/producto/<%= producto.codigo %>">
+                    <i class="fa fa-search"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="text-center py-4">
+                <a class="h6 text-decoration-none text-truncate" href="/producto/<%= producto.codigo %>">
+                  <%= producto.nombre %>
+                </a>
+                <div class="d-flex align-items-center justify-content-center mt-2">
+                  <h5>$<%= producto.precio.toFixed(2) %></h5>
+                  <% if (producto.precioOriginal > 0) { %>
+                  <h6 class="text-muted ml-2"><del>$<%= producto.precioOriginal.toFixed(2) %></del></h6>
+                  <% } %>
+                </div>
+                <div class="d-flex align-items-center justify-content-center mb-1">
+                  <% for (let i = 1; i <= 5; i++) { %>
+                  <% if (i <= Math.floor(producto.estrellas)) { %>
+                  <small class="fa fa-star text-primary mr-1"></small>
+                  <% } else if (i === Math.ceil(producto.estrellas) && producto.estrellas % 1 > 0) { %>
+                  <small class="fa fa-star-half-alt text-primary mr-1"></small>
+                  <% } else { %>
+                  <small class="far fa-star text-primary mr-1"></small>
+                  <% } %>
+                  <% } %>
+                  <small>(<%= producto.comentarios %>)</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% }); %>
+
+          <!-- Paginación -->
+          <% if (paginacion && paginacion.paginasTotales > 1) { %>
+          <div class="col-12 pb-1">
+            <nav aria-label="Page navigation">
+              <ul class="pagination justify-content-center mb-3">
+                <% if (paginacion.hasPrev) { %>
+                <li class="page-item">
+                  <a class="page-link" href="?pagina=<%= paginacion.paginaActual - 1 %>">
+                    <span>&laquo;</span>
+                  </a>
+                </li>
+                <% } %>
+                <% for (let i = 1; i <= paginacion.paginasTotales; i++) { %>
+                <li class="page-item <%= i === paginacion.paginaActual ? 'active' : '' %>">
+                  <a class="page-link" href="?pagina=<%= i %>"><%= i %></a>
+                </li>
+                <% } %>
+                <% if (paginacion.hasNext) { %>
+                <li class="page-item">
+                  <a class="page-link" href="?pagina=<%= paginacion.paginaActual + 1 %>">
+                    <span>&raquo;</span>
+                  </a>
+                </li>
+                <% } %>
+              </ul>
+            </nav>
+          </div>
+          <% } %>
+          <% } %>
+
+          <!-- MODO BÚSQUEDA: Si hay queryParams pero no productos -->
+          <% if (queryParams && Object.keys(queryParams).length > 0 && (!productos || productos.length === 0)) { %>
+          <div class="col-12 text-center py-5">
+            <div class="spinner-border text-primary" role="status"></div>
+            <p class="mt-3">Buscando productos...</p>
+          </div>
+          <% } %>
+
+          <!-- SI NO HAY PRODUCTOS (sin búsqueda) -->
+          <% if (productos && productos.length === 0 && (!queryParams || Object.keys(queryParams).length === 0)) { %>
+          <div class="col-12 text-center py-5">
+            <h4>No hay productos disponibles</h4>
+          </div>
+          <% } %>
+        </div>
+
+
+      </div>
+      <!-- Shop Product End -->
+    </div>
+  </div>
+  <!-- Shop End -->
+
+
+  <!-- Footer Start -->
+
+  <%- include('partials/footer') %>
+
+  <!-- Footer End -->
+
+
+  <!-- Back to Top -->
+  <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+  <!-- JavaScript Libraries -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+  <script src="lib/easing/easing.min.js"></script>
+  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+  <!-- Contact Javascript File -->
+  <script src="mail/jqBootstrapValidation.min.js"></script>
+  <script src="mail/contact.js"></script>
+
+  <!-- Template Javascript -->
+  <%- include('partials/script-generals') %>
+  <script src="js/main.js"></script>
+
+  <script src="js/tienda.js"></script>
+
+
+  <script src="js/header.js"></script>
+
+  <%- include('scripts/tiendajs') %>
+
+
+</body>
+
+</html>

@@ -1,0 +1,1293 @@
+:root {
+    --colorPrincipalOpaco: rgba(0, 101, 189, 0.5);
+    --colorPrincipal: rgba(0, 101, 189);
+
+    --colorPrincipalOscuro: #007bff;
+
+
+    --colorMain: #ffffff;
+    --colorMainForm: #d8d8d8;
+
+}
+
+body {
+
+    font-family: 'Arial', sans-serif;
+    padding: 0%;
+    margin: 0;
+}
+
+
+.tbody {
+    background-color: rgb(35, 152, 255);
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    display: flex;
+    min-height: 98vh;
+    flex-direction: row;
+}
+
+
+.bar {
+    width: 100%;
+    background-color: rgb(3, 75, 209);
+    min-height: 2vh;
+    max-height: 2vh;
+}
+
+
+.menu {
+    background-color: rgba(240, 248, 255, 0.5);
+    margin: 0;
+    padding: 0;
+    order: 0;
+    flex-shrink: 0;
+    flex: 2 0 0;
+    overflow-y: auto;
+    min-width: 20vw;
+    max-height: 100%;
+    max-width: 20vw;
+    overflow-y: scroll; /* Asegura que la barra de desplazamiento vertical esté siempre presente */
+    -ms-overflow-style: none; /* Oculta la barra en Internet Explorer y Edge */
+    scrollbar-width: none; 
+}
+
+
+.menu::-webkit-scrollbar {
+    display: none;
+}
+
+
+
+/*BOTNOS DE MENU*/
+
+.menu .btn {
+    background-color: var(--colorPrincipalOpaco);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 40px;
+    color: #ffffff;
+    cursor: default;
+    display: flex;
+    flex-direction: column;
+
+    box-shadow: 0 1px 0px 0px rgba(0, 0, 0, 0.5);
+
+
+}
+
+
+.menu .btn .btnHeader {
+    width: 100%;
+    flex-grow: 1;
+}
+
+.menu .btn .btnHeader p {
+
+    margin: 10px 0 0;
+    padding: 0 0 0 20px;
+    text-align: left;
+    word-wrap: break-word;
+    user-select: none;
+    pointer-events: none;
+    cursor: default;
+}
+
+
+
+.menu .btn:hover {
+    background-color: var(--colorPrincipal);
+}
+
+.menu .btn .acordion {
+    overflow: hidden;
+    width: 100%;
+    background-color: #ffffff;
+    margin: 0px 0 0 0px;
+    color: black;
+    display: none;
+    transition: background-color 4.0s;
+    gap: 30px;
+}
+
+
+.menu .btn .acordion .acordion-item {
+
+    padding: 10px 0 10px 20px;
+    background-color: transparent;
+    user-select: none;
+
+    transition: background-color 1.0s;
+    transition: color 1.2s;
+}
+
+.menu .btn .acordion .acordion-item span {
+    padding: 0px 0 0px 0px;
+}
+
+.menu .btn .acordion .acordion-item:hover {
+    background-color: #355270ff;
+    color: white;
+}
+
+
+
+
+
+
+
+/* FORMULARIO */
+
+.main {
+    background-color: aliceblue;
+    order: 1;
+    flex-grow: 9;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll; /* Asegura que la barra de desplazamiento vertical esté siempre presente */
+    -ms-overflow-style: none; /* Oculta la barra en Internet Explorer y Edge */
+    scrollbar-width: none; 
+    height: 98vh;
+}
+
+.main::-webkit-scrollbar {
+    display: none;
+}
+
+.main .container-form .form {
+
+    box-sizing: border-box;
+    background-color: var(--colorMainForm);
+    border-radius: 10px;
+    padding: 1rem;
+}
+
+.main .container-form {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 5vh 3vw;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: 200px;
+    gap: 5vh;
+}
+
+
+
+
+/* ------------------------------------------*/
+/* CONTROLES*/
+
+.main .container-form .form h2 {
+    color: black;
+    font-size: 1.5rem;
+}
+
+.main .container-form .form .container-gb {
+
+    display: flex;
+    flex-direction: row;
+    gap: 2vw;
+    flex-wrap: wrap;
+}
+
+.container-gb-column {
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.container-gb-left {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: right;
+
+}
+
+.pareja {
+    margin: 0%;
+    padding: 0%;
+}
+
+.txtGrande {
+    width: 40vw;
+}
+
+button {
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Arial', sans-serif;
+    border-radius: 50px;
+    cursor: pointer;
+    background: linear-gradient(45deg, #4CAF50, #00BCD4);
+    box-shadow: 0 4px 15px rgba(0, 188, 212, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+
+button:hover {
+    transform: translateY(-3px);
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+button i {
+    margin-right: 8px;
+}
+
+
+/* TXT */
+/* Estilo para inputs de texto (sin clases) */
+input[type="text"] {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 300px;
+    padding: 14px 20px;
+    font-size: 16px;
+    font-family: 'Arial', sans-serif;
+    border: 2px solid #e0e0e0;
+    border-radius: 50px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    outline: none;
+    margin: 5px 0;
+}
+
+/* Efecto hover */
+input[type="text"]:hover {
+    border-color: #c0c0c0;
+}
+
+/* Efecto al enfocar */
+input[type="text"]:focus {
+    border-color: #4CAF50;
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+}
+
+.barra-larga {
+    width: 100%;
+}
+
+
+/* NUMBER */
+
+input[type="number"] {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 300px;
+    padding: 14px 20px;
+    font-size: 16px;
+    font-family: 'Arial', sans-serif;
+    border: 2px solid #e0e0e0;
+    border-radius: 50px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    outline: none;
+    margin: 5px 0;
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"]:hover {
+    border-color: #c0c0c0;
+}
+
+input[type="number"]:focus {
+    border-color: #4CAF50;
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+}
+
+/* imgs */
+
+
+.file-input-container {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    margin: 5px 0 5px 0;
+    padding-top: 5px;
+
+}
+
+
+input[type="file"] {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 2;
+}
+
+/* Estilo visual personalizado (botón) */
+.file-input-label {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    padding: 14px 20px;
+    font-size: 16px;
+    font-family: 'Arial', sans-serif;
+    border: 2px solid #e0e0e0;
+    border-radius: 50px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    color: #555;
+    text-align: center;
+    cursor: pointer;
+
+}
+
+/* Texto que muestra los archivos seleccionados */
+.file-input-text {
+    display: block;
+    margin-top: 8px;
+    font-size: 14px;
+    color: #666;
+    padding-left: 20px;
+}
+
+/* Efectos hover y focus */
+.file-input-label:hover {
+    border-color: #c0c0c0;
+}
+
+input[type="file"]:focus+.file-input-label {
+    border-color: #4CAF50;
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+}
+
+/* Icono opcional (usando Font Awesome) */
+.file-input-label::before {
+    content: '\f07c';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    margin-right: 10px;
+}
+
+
+
+/* COMBO BOX */
+
+/* Estilo para el select */
+select {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 300px;
+    padding: 14px 45px 14px 20px;
+    /* Más padding a la derecha para la flecha */
+    font-size: 16px;
+    font-family: 'Arial', sans-serif;
+    border: 2px solid #e0e0e0;
+    border-radius: 50px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    outline: none;
+    margin: 5px 0;
+    appearance: none;
+    /* Elimina el estilo por defecto */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("/img/flechatop.svg");
+    background-repeat: no-repeat;
+    background-position: right 20px center;
+    background-size: 12px;
+    cursor: pointer;
+}
+
+/* Efecto hover */
+select:hover {
+    border-color: #c0c0c0;
+}
+
+/* Efecto al enfocar */
+select:focus {
+    border-color: #4CAF50;
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+}
+
+/* Estilo para las opciones */
+option {
+    padding: 10px;
+    background: white;
+    color: #333;
+}
+
+/* Para IE11 (opcional) */
+select::-ms-expand {
+    display: none;
+}
+
+
+
+/* PARRAFO HEADER */
+/* Estilo base para párrafos-título */
+.pareja p {
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #444;
+    margin: 0 0 4px 8px;
+    /* 4px debajo y 8px izquierda */
+    padding: 0;
+    text-align: left;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+
+p.required::after {
+    content: " *";
+    color: #e74c3c;
+}
+
+/* TABLA */
+
+/* Estilo base para tablas */
+table {
+    width: 100%;
+    max-width: none;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 0px 0;
+    font-family: 'Arial', sans-serif;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Cabecera de tabla */
+thead th {
+    background: linear-gradient(45deg, #4CAF50, #00BCD4);
+    color: white;
+    padding: 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+/* Celdas */
+tbody td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+/* Filas alternas */
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Efecto hover */
+tbody tr:hover td {
+    background-color: #f0f0f0;
+    transform: translateX(2px);
+}
+
+/* Borde redondeado en esquinas */
+table tr:first-child th:first-child {
+    border-top-left-radius: 12px;
+}
+
+table tr:first-child th:last-child {
+    border-top-right-radius: 12px;
+}
+
+table tr:last-child td:first-child {
+    border-bottom-left-radius: 12px;
+}
+
+table tr:last-child td:last-child {
+    border-bottom-right-radius: 12px;
+}
+
+/* Botones dentro de tabla (opcional) */
+.table-btn {
+    padding: 8px 12px;
+    border-radius: 20px;
+    background: #f0f0f0;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.table-btn:hover {
+    background: #4CAF50;
+    color: white;
+    box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
+}
+
+/* MENU CONTEXUAL */
+/* Estilo del menú contextual */
+.context-menu {
+    position: absolute;
+    width: 200px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    display: none;
+    overflow: hidden;
+    border: 1px solid #e0e0e0;
+}
+
+.context-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-item {
+    padding: 10px 15px;
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.2s;
+}
+
+.menu-item:hover {
+    background: #f5f5f5;
+}
+
+.menu-item i {
+    width: 18px;
+    text-align: center;
+}
+
+.ver {
+    color: #4CAF50;
+}
+
+.editar {
+    color: #2196F3;
+}
+
+.eliminar {
+    color: #f44336;
+}
+
+.copiar {
+    color: #FF9800;
+}
+
+.separador {
+    height: 1px;
+    background: #e0e0e0;
+    padding: 0 !important;
+    margin: 5px 0;
+}
+
+/*******************/
+
+
+
+/* Contenedor principal */
+.nav-buttons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 20px 0;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Estilo base botones */
+.nav-btn {
+    box-sizing: border-box;
+    min-width: 100px;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Botón retroceder */
+.retroceder {
+    background: linear-gradient(45deg, #f44336, #ff9800);
+    color: white;
+}
+
+/* Botón adelantar */
+.adelantar {
+    background: linear-gradient(45deg, #4CAF50, #00BCD4);
+    color: white;
+}
+
+/* Efectos hover */
+.nav-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Efecto activo */
+.nav-btn:active {
+    transform: translateY(0);
+}
+
+/* Contador */
+.contador {
+    min-width: 60px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    padding: 10px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .nav-btn {
+        min-width: 80px;
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+
+    .contador {
+        min-width: 50px;
+        font-size: 16px;
+    }
+}
+
+/* ------------------------------------------*/
+
+.pedido-card {
+    border: 1px solid #ddd;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 8px;
+    background: white;
+}
+
+.pedido-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.pedido-id {
+    font-weight: bold;
+    color: #333;
+}
+
+.estado-badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.estado-nuevo {
+    background: #ffeb3b;
+    color: #333;
+}
+
+.estado-completado {
+    background: #4caf50;
+    color: white;
+}
+
+.estado-proceso {
+    background: #2196f3;
+    color: white;
+}
+
+.estado-enviado {
+    background: #ff9800;
+    color: white;
+}
+
+.estado-entregado {
+    background: #4caf50;
+    color: white;
+}
+
+.estado-cancelado {
+    background: #f44336;
+    color: white;
+}
+
+.pedido-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.info-item {
+    padding: 8px;
+    background: #f8f9fa;
+    border-radius: 4px;
+}
+
+.productos-list {
+    margin-top: 15px;
+}
+
+.producto-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+}
+
+.acciones-pedido {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+.btn-accion {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.filtros-pedidos {
+    background: white;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+.filtros-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Agrega esto a tu estilo.css */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.modal-content {
+    background: white;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 900px;
+    width: 90%;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #eee;
+}
+
+.modal-header h3 {
+    margin: 0;
+    color: #333;
+    font-size: 24px;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: #999;
+    transition: color 0.3s ease;
+}
+
+.close-modal:hover {
+    color: #f44336;
+}
+
+.detalles-section {
+    margin-bottom: 25px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #2196f3;
+}
+
+.detalles-section h4 {
+    margin: 0 0 15px 0;
+    color: #2196f3;
+    font-size: 18px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.info-item {
+    background: white;
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+}
+
+.info-item strong {
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.producto-detalle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    margin: 8px 0;
+    background: white;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+}
+
+.producto-info {
+    flex: 1;
+}
+
+.producto-precio {
+    text-align: right;
+    min-width: 120px;
+}
+
+/* Estados de pedido mejorados */
+.estado-nuevo {
+    background: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeaa7;
+}
+
+.estado-completado {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.estado-no-pagado {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.estado-en-proceso {
+    background: #cce5ff;
+    color: #004085;
+    border: 1px solid #b8daff;
+}
+
+.estado-enviado {
+    background: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeaa7;
+}
+
+.estado-entregado {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.estado-cancelado {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Agrega esto a tu estilo.css */
+.info-item.highlight {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+}
+
+.info-item.highlight strong {
+    color: white;
+}
+
+.section-envio {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 15px 0;
+}
+
+.section-envio h4 {
+    color: white;
+    margin-bottom: 15px;
+}
+
+.envio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.envio-item {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 15px;
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+}
+
+/* Estilos para diferentes métodos de envío */
+.metodo-envio-tienda {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.metodo-envio-agencia {
+    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+}
+
+.metodo-envio-directo {
+    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+}
+
+
+
+
+
+
+
+
+
+
+/* detalles*/
+
+
+#modal-detalle-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    z-index: 1000;
+}
+
+#modal-detalle-producto {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 600px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: none;
+    z-index: 1001;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.modal-close-btn {
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.modal-item {
+    margin-bottom: 10px;
+}
+
+.modal-item strong {
+    font-weight: bold;
+}
+
+.ver-detalles-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.ver-detalles-btn:hover {
+    background-color: #0056b3;
+}
+
+
+#modal-detalle-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    z-index: 1000;
+}
+
+#modal-detalle-producto {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 600px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: none;
+    z-index: 1001;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.modal-close-btn {
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.modal-item {
+    margin-bottom: 10px;
+}
+
+.modal-item strong {
+    font-weight: bold;
+}
+
+.ver-detalles-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.ver-detalles-btn:hover {
+    background-color: #0056b3;
+}
+
+
+
+
+
+
+
+
+
+/* EDITAR */
+#modal-edicion-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    z-index: 1000;
+}
+
+#modal-edicion-producto {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 600px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: none;
+    z-index: 1001;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.modal-close-btn {
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.modal-body .modal-item {
+    margin-bottom: 10px;
+}
+
+.modal-actions {
+    margin-top: 20px;
+    text-align: right;
+}
+
+
+/******************************************************/

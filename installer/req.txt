@@ -1,0 +1,8 @@
+npm install bcryptjs
+npm install bcrypt
+npm install ejs@3.1.10
+
+npm install selenium-webdriver
+npm install --save-dev chai
+npm install --global mocha
+npm i puppeteer
