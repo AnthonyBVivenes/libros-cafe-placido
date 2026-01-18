@@ -1,6 +1,6 @@
--- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.44, for Win64 (x86_64)
 --
--- Host: localhost    Database: db_commence
+-- Host: 127.0.0.1    Database: db_commence
 -- ------------------------------------------------------
 -- Server version	8.0.35
 
@@ -31,7 +31,7 @@ CREATE TABLE `usuarios` (
   `credenciales` enum('A','B','C') DEFAULT 'C',
   PRIMARY KEY (`id`),
   UNIQUE KEY `email_UNIQUE` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (71,'anthonybvivenes@gmail.com','$2b$10$82pB79OyEpAAUw8xUQOq1OafuTX97hGQYC0GOl67kZOMVkffdBqYK','Anthony Vivenes','2025-09-04 19:15:48','A'),(72,'ranieripaolo04@gmail.com','$2b$10$5VUZMSATvhcbux60i9akhO8hfYEHHfWs8tfLAWCXYfIHWs15op6oa','Paolo Rainieri','2025-09-04 21:37:59','C'),(73,'jm@gmail.com','$2b$10$pWpgbWNeZ7adfgAMxv5EqeBxIYWrqaVnCa912A1PLIwuC5Ig5UVZW','Jorge Mendoza','2025-09-04 21:46:11','C');
+INSERT INTO `usuarios` VALUES (71,'anthonybvivenes@gmail.com','$2b$10$82pB79OyEpAAUw8xUQOq1OafuTX97hGQYC0GOl67kZOMVkffdBqYK','Anthony Vivenes','2025-09-04 19:15:48','A'),(72,'ranieripaolo04@gmail.com','$2b$10$5VUZMSATvhcbux60i9akhO8hfYEHHfWs8tfLAWCXYfIHWs15op6oa','Paolo Rainieri','2025-09-04 21:37:59','C'),(73,'jm@gmail.com','$2b$10$pWpgbWNeZ7adfgAMxv5EqeBxIYWrqaVnCa912A1PLIwuC5Ig5UVZW','Jorge Mendoza','2025-09-04 21:46:11','C'),(74,'orianavares@gmail.com','$2b$10$NmM1vl.dvHhP1bTSplRxUuAjIhrYCfQEFR8k9HXKUWeMiyBvBC78y','Oriana','2026-01-16 20:36:19','A'),(75,'ori@gmai.com','$2b$10$HRTEemAQua7ZMxd6ZyFy9eX6V5J3P6yDpP0z1GGAT9dj03iX5Q7m6','Oriana','2026-01-18 19:59:46','A');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-09-04 22:31:57
+-- Dump completed on 2026-01-18 17:34:24

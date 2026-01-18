@@ -1,8 +1,8 @@
 -- MySQL dump 10.13  Distrib 8.0.44, for Win64 (x86_64)
 --
--- Host: localhost    Database: db_commence
+-- Host: 127.0.0.1    Database: db_commence
 -- ------------------------------------------------------
--- Server version	8.0.44
+-- Server version	8.0.35
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -28,7 +28,7 @@ CREATE TABLE `categorias` (
   `estado` tinyint(1) NOT NULL DEFAULT '0',
   `img_default` int DEFAULT '0',
   PRIMARY KEY (`idcategorias`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,7 +37,7 @@ CREATE TABLE `categorias` (
 
 LOCK TABLES `categorias` WRITE;
 /*!40000 ALTER TABLE `categorias` DISABLE KEYS */;
-INSERT INTO `categorias` VALUES (1,'Ficción Contemporanea y Clasicos',0,0),(2,'Crecimiento Personal y Espiritualidad',1,4),(3,'Historia y Biografias',1,2),(4,'Literatura Infantil y Juvenil',1,3),(7,'Ciencia y Divulgacion',1,6),(8,'Filosofia y Pensamiento',1,6);
+INSERT INTO `categorias` VALUES (9,'Cuentos Infantiles',1,8),(10,'Terror',1,9),(11,'Psicología y crecimiento personal',1,10),(13,'Fantasía',1,12),(14,'Ciencia Ficción',1,13),(15,'Romance',1,14);
 /*!40000 ALTER TABLE `categorias` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -50,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-01-18 15:38:55
+-- Dump completed on 2026-01-18 17:34:24
