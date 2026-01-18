@@ -92,7 +92,7 @@ router.get('/login', (req, res) => {
 
 
 
-router.get('/lisboa/administracion', actionsController.admin);
+router.get('/lacasadelasabiduria/administracion', actionsController.admin);
 
 ////////////////////////////////////////
 //#############CATEGORIAS###############
