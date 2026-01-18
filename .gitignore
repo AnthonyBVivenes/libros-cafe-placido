@@ -1,2 +1,4 @@
 /node_modules
 /uploads/productos
+package-lock.json
+package.json
