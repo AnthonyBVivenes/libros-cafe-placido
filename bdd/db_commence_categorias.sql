@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.44, for Win64 (x86_64)
 --
 -- Host: localhost    Database: db_commence
 -- ------------------------------------------------------
--- Server version	8.0.35
+-- Server version	8.0.44
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -37,7 +37,7 @@ CREATE TABLE `categorias` (
 
 LOCK TABLES `categorias` WRITE;
 /*!40000 ALTER TABLE `categorias` DISABLE KEYS */;
-INSERT INTO `categorias` VALUES (1,'Caballeros',0,0),(2,'Frenos',1,4),(3,'Manguera',1,2),(4,'Correas',1,3),(7,'Bombas',1,6),(8,'focos',1,6);
+INSERT INTO `categorias` VALUES (1,'Ficción Contemporanea y Clasicos',0,0),(2,'Crecimiento Personal y Espiritualidad',1,4),(3,'Historia y Biografias',1,2),(4,'Literatura Infantil y Juvenil',1,3),(7,'Ciencia y Divulgacion',1,6),(8,'Filosofia y Pensamiento',1,6);
 /*!40000 ALTER TABLE `categorias` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -50,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-09-04 22:31:58
+-- Dump completed on 2026-01-18 15:38:55
