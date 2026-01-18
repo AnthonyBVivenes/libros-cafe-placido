@@ -39,7 +39,7 @@ CREATE TABLE `entradas` (
 
 LOCK TABLES `entradas` WRITE;
 /*!40000 ALTER TABLE `entradas` DISABLE KEYS */;
-INSERT INTO `entradas` VALUES (1,'index','[4,6,4]','[\"los mejores libro\",\"un espacio agradable\",\"al mejor precio\"]','[\"los mejores libro\",\"un espacio agradable\",\"al mejor precio\"]','[\"Tu auto merece lo mejor. Consigue en Multiservicios Lisboa los repuestos que garantizan rendimiento y durabilidad. ¡Precios sin competencia!\",\"Encuentra los repuestos de calidad para tu vehículo. Te ofrecemos soluciones rápidas y fiables para que sigas tu camino.\",\"En Multiservicios Lisboa, tenemos el repuesto que buscas para tu vehículo. Desde lo más pequeño hasta lo más complejo, te ofrecemos calidad, precios competitivos y el mejor servicio.\"]'),(2,'index','[16]','[\"algo\"]','[\"descuentos...\"]','[\"15%\"]'),(3,'index','[17]','[\"otro mas\"]','[\"alta calidad\"]','[\"Originales!\"]'),(4,'index','[17]','[\"cosas\"]','[\"Repuéstos originales\"]','[\"Lo que buscas en solo sítio\"]'),(5,'index','[17]','[\"cosas\"]','[\"mas articulos\"]','[\"Aquí\"]');
+INSERT INTO `entradas` VALUES (1,'index','[4,6,4]','[\"Los mejores libro\",\"Un espacio agradable\",\"Al mejor precio\"]','[\"Los mejores libro\",\"Un espacio agradable\",\"Al mejor precio\"]','[\"Tu mente merece lo mejor. en la librerira La Casa de la Sabiduria, encuentras los libros que inspiran, enseñan y transforman.\",\" Descubre el libro que cambiara tu historia.\",\" En librería La casa de la Sabiduria, cada pagina es una oportunidad. Libros para todos, precios para ti.\"]'),(2,'index','[16]','[\"algo\"]','[\"Precios y Accesibilidad\"]','[\"...\"]'),(3,'index','[17]','[\"otro mas\"]','[\"Experiencia del lector\"]','[\"...\"]'),(4,'index','[17]','[\"cosas\"]','[\"Variedad y Curaduria\"]','[\"Tu proxima gran lectura esta aqui\"]'),(5,'index','[17]','[\"cosas\"]','[\"mas articulos\"]','[\"Aquí\"]');
 /*!40000 ALTER TABLE `entradas` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-01-18 10:01:15
+-- Dump completed on 2026-01-18 10:29:38
